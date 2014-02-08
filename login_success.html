@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blogging Service</title>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="js/source/dropdown.js"></script>
+    <script type="text/javascript" src="js/source/modal.js"></script>
+    <script type="text/javascript" src="js/source/carousel.js"></script>
+<!--
+    <script type="text/javascript">
+        $('.dropdown-toggle').dropdown()
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#carousel-featured-content").carousel();
+        });
+    </script>
+-->
+</head>
+<body>
+    
+<!--    
+    START NAVIGATION BAR
+-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+    <ul class="nav navbar-nav">
+        <li><a><span class="label label-success">Logo</span></a></li>
+        <li class="active"><a href="#">Active</a></li>
+        <li><a href="#">Test</a></li>
+        <li><a href="#">Another test</a></li>
+        <li class="dropdown">
+        <a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Drop me!<b class="caret"></b></b></a>
+        <ul class="dropdown-menu">
+            <li><a>Menu</a></li>
+        </ul>
+        </li>
+<!--
+         <li class="dropdown">
+        <a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle"><span class="glyphicon glyphicon-search"></span><b class="caret"></b></b></a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="right-inner-addon">
+                        <a><i class="glyphicon glyphicon-search"></i>
+                       <input type="text" class="form-control" placeholder="Search"></a>
+                </div>
+            </li>
+-->
+        </ul>
+        </li>
+            
+    </ul>
+
+<!--
+    <ul class="nav navbar-nav navbar-right">
+<li><a href="#" role="button" class="btn inline" data-toggle="modal" data-target="#searchModal">
+                    <span class="glyphicon glyphicon-search">Search</span>
+                </a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+    </ul>
+-->
+
+    <ul class="nav navbar-nav navbar-right">
+<!--        <li class="text-right">-->
+<!--             <a class="col-md-8"><input type="text" class="form-control" placeholder="Search"></a>-->
+<!--                <a class="col-md-8"><input type="text" class="form-control" placeholder="Search" style="width: 350px;"></a>-->
+<!--                <div class="form-group"></div>-->
+  
+                
+                <li><a href="#" role="button" class="btn" data-toggle="modal" data-target="#searchModal">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a></li>
+<!--
+                    <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user"></span> Sign In
+                    </a>
+-->
+                    <li class="dropdown">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    
+ 
+            
+  <ul class="dropdown-menu">
+<!--            <ul id="dropdown-login" class="dropdown-menu pull-left">-->
+<!--                <li><a>sss</a></li>-->
+                 
+                     
+                     <li><a>Meeee</a></li>
+            </ul>
+        
+    </ul>
+<!--        </li>-->
+       
+        </div>
+    </nav>
+
+<!--
+    END NAVIGATION BAR
+-->
+
+<!--
+    HERE'S SIGN UP MODAL BOX
+    START!!!!!!
+-->
+
+<!--
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="signupModalLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="email" class="col-md-8 control-label">Email Address</label>
+                            <div class="col-md-15">
+                                <input type="email" class="form-control" placeholder="Email Address">
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-8 control-label">Password</label>
+                            <div class="col-md-15">
+                                <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpassword" class="col-md-8 control-label">Confirm password</label>
+                            <div class="col-md-15">
+                                <input type="password" class="form-control" placeholder="Confirm password">
+                            </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<!--
+    END
+-->
+
+<!--
+    HERE'S SEARCH MODAL BOX
+    START!!!!!!
+-->
+
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary "><span class="glyphicon glyphicon-search"></span></button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+    END
+-->
+
+   <div class="container">
+       <div class="row">
+            <div class="col-md-2">
+                SIDEBAR
+           </div> 
+        
+<!--    BEGIN CAROUSEL       -->
+           
+            <div class="col-md-10">
+                <div id="carousel-featured-content" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-featured-content" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-featured-content" data-slide-to="1"></li>
+                        <li data-target="#carousel-featured-content" data-slide-to="2"></li>
+                    </ol>
+                    
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="slider-image/slide1.png">
+                            <div class="carousel-caption">
+                                <h3>Slide 1</h3>
+                                <p>Slide 1 slide 1 slide 1</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="slider-image/slide2.png">
+                            <div class="carousel-caption">
+                                <h3>Slide 2</h3>
+                                <p>Slide 2 slide 2 slide 2</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="slider-image/slide3.png">
+                            <div class="carousel-caption">
+                                <h3>Slide 3</h3>
+                                <p>Slide 3 slide 3 slide 3</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a class="left carousel-control" href="#carousel-featured-content" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-featured-content" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+                
+<!--        END CAROUSEL        -->
+                
+                <hr>
+    <h2>Test</h2>
+    <h4>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis libero iaculis, consequat nunc in, consectetur elit. Vestibulum consectetur velit sit amet mattis iaculis. Sed eget risus elit. Cras vehicula arcu ipsum, sed suscipit ligula fermentum at. Mauris porta dui ac ante mattis, hendrerit tristique eros interdum. Pellentesque semper tellus id metus facilisis convallis. Nam varius eu sapien quis tincidunt. Suspendisse lorem turpis, bibendum sit amet libero vitae, tincidunt mattis mauris. Nunc aliquam orci quis dolor placerat cursus.</p>
+
+<!--        <center><img src="http://graph.facebook.com/zuck/picture?type=large" class="img-circle"></center>-->
+
+<p>Quisque nec odio fringilla, scelerisque mauris sit amet, convallis leo. Nulla id venenatis est, eu tincidunt elit. Donec eu orci ac quam sagittis scelerisque. Suspendisse vitae ante eget felis hendrerit varius. Donec a mattis ante, eu eleifend mauris. Donec elementum malesuada orci, sit amet eleifend nisl pretium id. Praesent congue semper enim. Quisque eu justo in libero tempor hendrerit eu non lacus. Vestibulum at magna non nibh porta aliquet. Nunc pulvinar odio vel massa sodales, nec malesuada risus iaculis.</p>
+
+<p>Aliquam erat volutpat. Proin consequat venenatis euismod. Fusce porttitor, metus vitae congue sagittis, urna turpis facilisis ipsum, id adipiscing lacus sapien sed metus. Vivamus placerat sodales risus ac gravida. Maecenas vitae placerat mi. Suspendisse nec magna vitae purus tincidunt molestie. Integer sollicitudin tempus mattis. Vestibulum ac aliquet tortor. Proin porta volutpat quam vitae consequat. Sed suscipit porttitor massa, id pharetra dolor dictum ac. Cras ligula magna, fringilla a euismod non, tincidunt et ligula. Quisque quam turpis, luctus vel arcu eget, feugiat venenatis dui. Morbi facilisis erat id rhoncus tincidunt.</p> </h4>
+           </div>
+       </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+    body {
+/*    background-color:#ecf0f1;*/
+    background-color: #eff3f3;       
+    padding-top: 70px;
+    }
+        
+    .form-group, input {
+            width:250px;
+    }
+        
+    .dropdown-menu {
+            width: 300px;
+    }
+        
+    .right-inner-addon {
+            position: relative;
+    }
+    
+    .right-inner-addon input {
+            padding-right: 30px;
+    }
+        
+    .right-inner-addon i {
+            position: absolute;
+            right: 0px;
+            padding: 10px 12px;
+            pointer-events: none;
+    }
+
+    .carousel-inner,.carousel,.item,.container,.fill {
+/*            height: 525px;*/
+            width: 82%;
+    }
+    .sidebar {
+            width: 28%;
+    }
+    
+    // Classes
+    .center-block {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    // Usage as mixins
+    .element {
+      .center-block();
+    }
+    
+    // Usage
+    .container {
+      width: 940px;
+      .center-block();
+    }
