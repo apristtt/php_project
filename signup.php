@@ -30,7 +30,7 @@
     <script type="text/javascript" src="js/source/dropdown.js"></script>
     <script type="text/javascript" src="js/source/modal.js"></script>
     <script type="text/javascript" src="js/source/tooltip.js"></script>
-    </head>
+</head>
 <body>
     
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -70,28 +70,34 @@
                 <div class="panel panel-info">
                     <div class="panel-body">
                         <div class="container">
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" action="doSignup.php" method="POST" role="form">
+                        <div class="form-group">
+                            <label for="name" class="col-md-8 control-label">Member Name</label>
+                                <div class="col-md-15">
+                                    <input type="name" class="form-control" placeholder="Name" name="MemberName">
+                                </div>
+                        </div>
                         <div class="form-group">
                             <label for="email" class="col-md-8 control-label">Email Address</label>
                                 <div class="col-md-15">
-                                    <input type="email" class="form-control" placeholder="Email Address">
+                                    <input type="email" class="form-control" placeholder="Email Address" name="MemberEmail">
                                 </div>
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-md-8 control-label">Password</label>
                                 <div class="col-md-15">
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input type="password" class="form-control" placeholder="Password" name="MemberPassword">
                                 </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="confirmpassword" class="col-md-8 control-label">Confirm password</label>
                                 <div class="col-md-15">
                                     <input type="password" class="form-control" placeholder="Confirm password">
                                 </div>
-                        </div>
+                        </div> -->
                          <div class="form-group">
                             <div class="col-md-offset-8 col-md-15">
-                                <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
                             </div>
                         </div>
                         </form>
@@ -169,6 +175,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form">
+                        
                         <div class="form-group">
                             <label for="email" class="col-md-8 control-label">Email Address</label>
                                 <div class="col-md-15">
@@ -208,5 +215,8 @@
             </div>
         </div>
     </div>
-    
+    <?php 
+
+     ?>
     </body>
+</html>
