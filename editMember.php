@@ -35,8 +35,8 @@
 	<?php 
 		include("conf.php");
 
-		if($_REQUEST['memberID'] != "") {
-		$memberID = $_REQUEST['memberID'];
+		if($_GET['memberID'] != "") {
+		$memberID = $_GET['memberID'];
 		$result = mysql_query("SELECT * FROM Member WHERE MemberID = '$memberID'") or die(mysql_error());
 		$query = mysql_fetch_array($result);
 
@@ -110,7 +110,8 @@
                         	</div>
                         	<div class="form-group">
                             <div class="col-md-offset-8 col-md-15">
-                                <button type="submit" class="btn btn-success btn-lg" name="submitEdit">Edit</button>
+                               	<input type="submit" class="btn btn-success" name="submitEdit" value="Edit">
+                                <!-- <button type="submit" class="btn btn-success btn-lg" name="submitEdit">Edit</button> -->
                             </div>
                         	</div>
 						</form>
