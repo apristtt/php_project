@@ -39,7 +39,7 @@
                 <li>
                     <a><span class="label label-success">Logo</span></a>
                 </li>
-                <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 <li class="active"><a href="member.php">Member</a></li>
                 <li><a href="#">Another test</a></li>
                     <li class="dropdown">

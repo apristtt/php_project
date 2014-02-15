@@ -39,7 +39,7 @@
                 <li>
                     <a><span class="label label-success">Logo</span></a>
                 </li>
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="active"><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 <li><a href="member.php">Member</a></li>
                 <li><a href="#">Another test</a></li>
                     <li class="dropdown">
@@ -83,7 +83,9 @@
                         echo "<div class='panel panel-info'>".
                         "<div class='panel-heading'>$query[NewsTitle]".
                         "<small class='pull-right'> Posted on $query[NewsDate]</small></div>".
-                        "<div class='panel-body'>$query[NewsContent]</div></div><hr>";
+                        "<div class='panel-body'>$query[NewsContent]</div>".
+                        "<div class='panel-footer'>Comments <a href='readNews.php?NewsID=$query[NewsID]'>".
+                        "<small class='pull-right'>Read more &raquo;</small></a></div></div><hr>";
                     }
                 ?>
                    <!-- <div class="panel panel-info">
@@ -96,11 +98,11 @@
            
             
              <div class="col-lg-3">
-                
+                <h4>Recent News</h4>
                 <div class="list-group">
 
                     <?php
-                        $resultRecentNews = mysql_query("SELECT * FROM News") or die(mysql_error());
+                        $resultRecentNews = mysql_query("SELECT * FROM News ORDER by NewsID DESC") or die(mysql_error());
 
                         while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
                             echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".

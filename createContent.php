@@ -39,7 +39,7 @@
                 <li>
                     <a><span class="label label-success">Logo</span></a>
                 </li>
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="active"><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 <li><a href="member.php">Member</a></li>
                 <li><a href="#">Another test</a></li>
                     <li class="dropdown">
@@ -90,7 +90,7 @@
                                 </div>
                         </div> -->
 
-                        
+
                         <!-- <div class="form-group">
                             <label for="confirmpassword" class="col-md-8 control-label">Confirm password</label>
                                 <div class="col-md-15">

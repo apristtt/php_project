@@ -32,14 +32,24 @@
     <script type="text/javascript" src="js/source/tooltip.js"></script>
     </head>
 <body>
-    
+    <?php 
+        include("conf.php");
+        //$memberID = "";
+        if($_REQUEST['NewsID'] != "") {
+            $NewsID = $_REQUEST['NewsID'];
+           // $sql = "SELECT * FROM member WHERE MemberID = '$memberID'";
+            $result = mysql_query("SELECT * FROM News WHERE NewsID = $NewsID") or die(mysql_error());
+            $query = mysql_fetch_array($result);
+            //echo $NewsID;
+        }
+        ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <ul class="nav navbar-nav">
                 <li>
                     <a><span class="label label-success">Logo</span></a>
                 </li>
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="active"><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 <li><a href="member.php">Member</a></li>
                 <li><a href="#">Another test</a></li>
                     <li class="dropdown">
@@ -67,10 +77,8 @@
 <!--            <div class="col-xs-12 col-sm-9">-->
             <div class="col-lg-9">
                 <div class="panel panel-info">
-                    <div class="panel-heading">Heading ($newsHead) <small class="pull-right">Posted on $postedDate</small></div>
-                    <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis libero iaculis, consequat nunc in, consectetur elit. Vestibulum consectetur velit sit amet mattis iaculis. Sed eget risus elit. Cras vehicula arcu ipsum, sed suscipit ligula fermentum at. Mauris porta dui ac ante mattis, hendrerit tristique eros interdum. Pellentesque semper tellus id metus facilisis convallis. Nam varius eu sapien quis tincidunt. Suspendisse lorem turpis, bibendum sit amet libero vitae, tincidunt mattis mauris. Nunc aliquam orci quis dolor placerat cursus.
-                    </div>
+                    <div class="panel-heading"><? echo $query['NewsTitle'] ?> <small class="pull-right">Posted <? echo $query['NewsDate'] ?></small></div>
+                    <div class="panel-body"><? echo $query['NewsContent'] ?></div>
                 </div>
                 <div class="page-header">
                     <h3>Comments</h3>
@@ -105,21 +113,17 @@
             
              <div class="col-lg-3">
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">
-                    <h4 class="list-group-item-heading">News 1</h4>
-                    <p class="list-group-item-text">Today is thursday.</p></a>
-                
-                    <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">News 2</h4>
-                    <p class="list-group-item-text">Today is thursday.</p></a>
-                         
-                    <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">News 3</h4>
-                    <p class="list-group-item-text">Today is thursday.</p></a>
-                              
-                    <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">News 4</h4>
-                    <p class="list-group-item-text">Today is thursday.</p></a>
+
+                    <?php
+                        $resultRecentNews = mysql_query("SELECT * FROM News") or die(mysql_error());
+
+                        while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
+                            echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".
+                            "<h4 class='list-group-item-heading'>$queryRecentNews[NewsTitle]</h4></a>";
+                        }
+
+                    ?>
+                    
                 </div>
             </div>
             
