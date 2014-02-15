@@ -32,7 +32,17 @@
     <script type="text/javascript" src="js/source/tooltip.js"></script>
     </head>
 <body>
-     <?php include("conf.php"); ?>
+    <?php
+        session_start(); 
+        include("conf.php"); 
+        $MemberSessionID = $_SESSION['MemberSessionID'];
+        $MemberName = $_SESSION['MemberName'];
+        if($MemberSessionID<>session_id() or $MemberName ==""){
+            echo "Not Login";
+        } else {
+            echo "Login";
+        }
+    ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <ul class="nav navbar-nav">
@@ -130,20 +140,23 @@
                     <h4 class="modal-title" id="loginModalLabel">Login</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" action="doLogin.php" method="POST" role="form">
                         <div class="form-group">
-                            <label for="email" class="col-md-8 control-label">Email Address</label>
+                            <!-- <label for="email" class="col-md-8 control-label">Email Address</label>
                                 <div class="col-md-15">
                                     <input type="email" class="form-control" placeholder="Email Address">
+                                </div> -->
+                            <label for="MemberName" class="col-md-8 control-label">Username</label>
+                                <div class="col-md-15">
+                                    <input type="text" class="form-control" name="MemberName" placeholder="Username">
                                 </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-md-8 control-label">Password</label>
-                                <div class="col-md-15">
-                                    <input type="password" class="form-control" placeholder="Password">
-                                </div>
+                          <label for="MemberPassword" class="col-md-8 control-label">Password</label>
+                              <div class="col-md-15">
+                                  <input type="password" class="form-control" name="MemberPassword" placeholder="Password">
+                              </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-md-offset-8 col-md-12">
                                 <div class="checkbox">
@@ -154,7 +167,10 @@
                                         </ul>
                                     </label>
                                 </div>
+                                <!-- <input type="submit" class="btn btn-primary" name="submit" value="Sign In"> -->
+                                <button type="submit" class="btn btn-primary">Sign In</button>
                             </div>
+
                         </div>
                       
                     </form>
@@ -163,8 +179,9 @@
                 <div class="modal-footer">
                     <ul class="list-inline">
                         <li class="pull-left"><h6>Don't have an account? <a href="signup.php"><b>Sign Up!</b></a></h6></li>
-                        <li class="pull-right"><button type="button" class="btn btn-primary">Sign In</button></li>
-                        <li class="pull-right"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button></li>
+                        <!-- <li class="pull-right"><button type="submit" class="btn btn-primary">Sign In</button></li> -->
+                        <!-- <li class="pull-right"><input type="submit" class="btn" value="Sign In"></li> -->
+                        <!-- <li class="pull-right"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button></li> -->
                     </ul>
                 </div>
             </div>
