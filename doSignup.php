@@ -14,6 +14,6 @@
 		$sql = "INSERT INTO Member (MemberName, MemberEmail, MemberPassword) VALUES ('$MemberName', '$MemberEmail', '$MemberPassword')";
 		$query = mysql_query($sql) or die(mysql_error()) ;
 			echo '<script type="text/javascript">'.
-		"alert('Signup Complete!'); document.location = 'showMember.php'</script>";
+		"alert('Signup Complete!'); document.location = 'member.php'</script>";
 	}
  ?>
