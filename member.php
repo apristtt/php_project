@@ -112,6 +112,7 @@
                             <th>Member Name</th>
                             <th>Email Address</th>
                             <th>Join Date</th>
+                            <th><span class="glyphicon glyphicon-cog"></span></th>
                         </tr>
                     </thead>
 
@@ -126,7 +127,16 @@
                                 echo "<tr><td>$query[MemberID]</td>".
                                 "<td>$query[MemberName]</td>".
                                 "<td>$query[MemberEmail]</td>".
-                                "<td>$query[MemberJoinDate]</td></tr>";
+                                "<td>$query[MemberJoinDate]</td>".
+                                "<td><a href='editMember.php?memberID=$query[MemberID]'>".
+                                "<button class='btn btn-success'><span class='glyphicon glyphicon-pencil'>".
+                                "</span></button></a> &nbsp;".
+                                "<a href='#' role='button' class='dropdown-toggle' data-toggle='modal' data-target='#editModal'>".
+                                "<button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'>".
+                                "</span></button></a> &nbsp;".
+                                "<a href='doDeleteMember.php?memberID=$query[MemberID]'>".
+                                "<button class='btn btn-danger'><span class='glyphicon glyphicon-trash'>".
+                                "</span></button></a></td></tr>";
                             }
                         ?>
                     </tbody>
@@ -161,7 +171,7 @@
     
     
     
- <!--    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -169,20 +179,23 @@
                     <h4 class="modal-title" id="loginModalLabel">Login</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" action="doLogin.php" method="POST" role="form">
                         <div class="form-group">
-                            <label for="email" class="col-md-8 control-label">Email Address</label>
+                            <!-- <label for="email" class="col-md-8 control-label">Email Address</label>
                                 <div class="col-md-15">
                                     <input type="email" class="form-control" placeholder="Email Address">
+                                </div> -->
+                            <label for="MemberName" class="col-md-8 control-label">Username</label>
+                                <div class="col-md-15">
+                                    <input type="text" class="form-control" name="MemberName" placeholder="Username">
                                 </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-md-8 control-label">Password</label>
-                                <div class="col-md-15">
-                                    <input type="password" class="form-control" placeholder="Password">
-                                </div>
+                          <label for="MemberPassword" class="col-md-8 control-label">Password</label>
+                              <div class="col-md-15">
+                                  <input type="password" class="form-control" name="MemberPassword" placeholder="Password">
+                              </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-md-offset-8 col-md-12">
                                 <div class="checkbox">
@@ -193,7 +206,10 @@
                                         </ul>
                                     </label>
                                 </div>
+                                <!-- <input type="submit" class="btn btn-primary" name="submit" value="Sign In"> -->
+                                <button type="submit" class="btn btn-primary">Sign In</button>
                             </div>
+
                         </div>
                       
                     </form>
@@ -202,13 +218,48 @@
                 <div class="modal-footer">
                     <ul class="list-inline">
                         <li class="pull-left"><h6>Don't have an account? <a href="signup.php"><b>Sign Up!</b></a></h6></li>
-                        <li class="pull-right"><button type="button" class="btn btn-primary">Sign In</button></li>
-                        <li class="pull-right"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button></li>
+                        <!-- <li class="pull-right"><button type="submit" class="btn btn-primary">Sign In</button></li> -->
+                        <!-- <li class="pull-right"><input type="submit" class="btn" value="Sign In"></li> -->
+                        <!-- <li class="pull-right"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button></li> -->
                     </ul>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="editModalLabel">Edit Member</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="doEditMember.php" method="POST" role="form">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Member ID</label>
+                            <div class="col-md-8">
+                                <p class="form-control-static">
+                                    #ID
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Member Name</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="MemberName" value="<? echo $query['MemberName'] ?>"></input>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-8 col-md-15">
+                                <input type="submit" class="btn btn-success" name="submitEdit" value="Edit"></input>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     
     
     </body>

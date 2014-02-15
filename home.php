@@ -35,12 +35,18 @@
     <?php
         session_start(); 
         include("conf.php"); 
-        $MemberSessionID = $_SESSION['MemberSessionID'];
-        $MemberName = $_SESSION['MemberName'];
-        if($MemberSessionID<>session_id() or $MemberName ==""){
-            echo "Not Login";
-        } else {
-            echo "Login";
+        if (isset($MemberSessionID)){
+            $MemberSessionID = $_SESSION['MemberSessionID'];
+        } elseif (isset($MemberName)) {
+            $MemberName = $_SESSION['MemberName'];
+        } elseif (isset($MemberSessionID)) {
+        
+            if($MemberSessionID<>session_id() or $MemberName ==""){
+                echo "Not Login";
+            } else {
+                echo "Login";
+            }
+
         }
     ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

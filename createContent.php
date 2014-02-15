@@ -66,7 +66,7 @@
         <div class="row">
             <div class="page-header">
                     <h3>Create New Content</h3>
-                </div>
+            </div>
                 <div class="panel panel-info">
                     <div class="panel-body">
                         <div class="container">
