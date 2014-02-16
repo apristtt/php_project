@@ -23,21 +23,6 @@
                     </div>
                 </div>
 
-                <h4>Recent News</h4>
-                <div class="list-group">
-
-                    <?php
-                        $resultRecentNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
-
-                        while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
-                            echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".
-                            "<p class='list-group-item-text'>$queryRecentNews[NewsTitle]</p></a>";
-                        }
-
-                    ?>
-                    
-                </div>
-
                 <h4>Pinned News</h4>
                 <div class="list-group">
 
@@ -47,6 +32,21 @@
                         while($queryPinnedNews = mysql_fetch_array($resultPinnedNews)) {
                             echo "<a href='readNews.php?NewsID=$queryPinnedNews[NewsID]' class='list-group-item'>".
                             "<p class='list-group-item-text'>$queryPinnedNews[NewsTitle]</p></a>";
+                        }
+
+                    ?>
+                    
+                </div>
+
+                <h4>Recent News</h4>
+                <div class="list-group">
+
+                    <?php
+                        $resultRecentNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
+
+                        while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
+                            echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".
+                            "<p class='list-group-item-text'>$queryRecentNews[NewsTitle]</p></a>";
                         }
 
                     ?>

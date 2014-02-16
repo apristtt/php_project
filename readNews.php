@@ -75,7 +75,14 @@
         <div class="row">
 <!--            <div class="col-xs-12 col-sm-9">-->
             <div class="col-lg-9">
-                <div class="panel panel-info">
+                <?
+                    // echo $query['NewsPinned'];
+                    if ($query['NewsPinned']=='1') {
+                        echo '<div class="panel panel-success">';
+                    } else {
+                        echo '<div class="panel panel-info">';
+                    }
+                ?>
                     <div class="panel-heading"><? echo $query['NewsTitle'] ?> <small class="pull-right">Posted <? echo $query['NewsDate'] ?></small></div>
                     <div class="panel-body"><? echo $query['NewsContent'] ?></div>
                 </div>

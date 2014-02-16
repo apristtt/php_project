@@ -73,7 +73,7 @@
             <div class="panel panel-warning">
               <div class="panel-heading">
                     <? echo $query['NewsTitle'] ?> &ensp;
-                      <? include("displayNewsTools_viewHiddenNews.php") ?>
+                      <? include("displayNewsTools.php") ?>
                   <small class="pull-right">
                     <? echo $query['NewsDate'] ?>
                   </small>
