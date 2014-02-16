@@ -82,79 +82,59 @@
         <div class="row">
 <!--            <div class="col-xs-12 col-sm-9">-->
             <div class="col-lg-9">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <a href="createContent.php">
-                            <button type="button" class="btn btn-primary pull-right">
-                                <span class="glyphicon glyphicon-pencil"></span> Create Content
-                            </button>
-                        </a>
-                    </div>
-                </div>
 
                 <?
-                    $result = mysql_query("SELECT * FROM News ORDER by NewsID DESC") or die(mysql_error());
-
-                    while ($query = mysql_fetch_array($result)){
-                        // echo "<div class='panel panel-info'>".
-                        // "<div class='panel-heading'>$query[NewsTitle]".
-                        // "<small class='pull-right'> Posted on $query[NewsDate]</small></div>".
-                        // "<div class='panel-body'>$query[NewsContent]</div>".
-                        // "<div class='panel-footer'>Comments".
-                        // "<a href='readNews.php?NewsID=$query[NewsID]'>".
-                        // "<small class='pull-right'>Read more &raquo;</small></a></div></div><hr>";
-                    
+                    $result = mysql_query("SELECT * FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
+                    while ($query = mysql_fetch_array($result)){                    
                 ?>
-
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <? echo $query['NewsTitle'] ?>
-                        <small class="pull-right"> Posted on <? echo $query['NewsDate'] ?></small>
-                    </div>
-                    <div class="panel-body">
-                        <? echo $query['NewsContent'] ?>
-                    </div>
-                    <div class="panel-footer">Comments
-                        <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
-                            <small class='pull-right'>Read more &raquo;</small>
-                        </a>
-                    </div>
-                </div>
-                <hr>
-                <? } ?>
-                   <!-- <div class="panel panel-info">
-                    <div class="panel-heading"><? echo $query['NewsTitle'] ?> <small class="pull-right">Posted on <? echo $query['NewsDate'] ?></small></div>
-                        <div class="panel-body">
-                        <? echo $query['NewsContent'] ?>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <? echo $query['NewsTitle'] ?> &ensp;
+                                <? include ("displayNewsTools.php") ?>
+                            <small class="pull-right">
+                                Posted on <? echo $query['NewsDate'] ?>
+                            </small>
                         </div>
-                    </div> -->
+                        <div class="panel-body">
+                            <? echo $query['NewsContent'] ?>
+                        </div>
+                        <div class="panel-footer">Comments
+                            <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
+                                <small class='pull-right'>Read more &raquo;</small>
+                            </a>
+                        </div>
+                    </div>
+                <? } ?>
+                <?
+                    $result = mysql_query("SELECT * FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
+                    while ($query = mysql_fetch_array($result)){                    
+                ?>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <? echo $query['NewsTitle'] ?> &ensp;
+                                <? include ("displayNewsTools.php") ?>
+                            <small class="pull-right">
+                                Posted on <? echo $query['NewsDate'] ?>
+                            </small>
+                        </div>
+                        <div class="panel-body">
+                            <? echo $query['NewsContent'] ?>
+                        </div>
+                        <div class="panel-footer">Comments
+                            <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
+                                <small class='pull-right'>Read more &raquo;</small>
+                            </a>
+                        </div>
+                    </div>
+                <? } ?>
+
             </div>
            
-            
-             <div class="col-lg-3">
-                <h4>Recent News</h4>
-                <div class="list-group">
-
-                    <?php
-                        $resultRecentNews = mysql_query("SELECT * FROM News ORDER by NewsID DESC") or die(mysql_error());
-
-                        while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
-                            echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".
-                            "<h4 class='list-group-item-heading'>$queryRecentNews[NewsTitle]</h4></a>";
-                        }
-
-                    ?>
-                    
-                </div>
-            </div>
+            <? include("displaySidebar.php") ?>
             
         </div>
-        
-       
-        
+
     </div>
-    
-    
     
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">

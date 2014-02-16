@@ -110,22 +110,7 @@
                 </div>
             </div>
            
-            
-             <div class="col-lg-3">
-                <div class="list-group">
-
-                    <?php
-                        $resultRecentNews = mysql_query("SELECT * FROM News") or die(mysql_error());
-
-                        while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
-                            echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".
-                            "<h4 class='list-group-item-heading'>$queryRecentNews[NewsTitle]</h4></a>";
-                        }
-
-                    ?>
-                    
-                </div>
-            </div>
+              <? include("displaySidebar.php") ?>
             
         </div>
         

@@ -30,10 +30,10 @@
     <script type="text/javascript" src="js/source/dropdown.js"></script>
     <script type="text/javascript" src="js/source/modal.js"></script>
     <script type="text/javascript" src="js/source/tooltip.js"></script>
-</head>
+    </head>
 <body>
-    
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<? include("conf.php"); ?>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <ul class="nav navbar-nav">
                 <li>
@@ -61,56 +61,29 @@
                 </a>
             </li>
     </nav>
-    
     <div class="container">
         <div class="row">
             <div class="page-header">
-                    <h3>Create New Content</h3>
+                    <h3>Hidden News</h3>
             </div>
-                <div class="panel panel-info">
-                    <div class="panel-body">
-                        <div class="container">
-                        <form class="form-horizontal" action="doCreateContent.php" method="POST" role="form">
-                        <div class="form-group">
-                            <label for="title" class="col-md-8 control-label">Title</label>
-                                <div class="col-md-15">
-                                    <input type="name" class="form-control" style="width: 550px;" placeholder="News Title" name="NewsTitle">
-                                </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="content" class="col-md-8 control-label">Content</label>
-                                <div class="col-md-15">
-                                    <textarea class="form-control" style="width: 550px;" name="NewsContent" rows="8"></textarea>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-3 col-md-15">
-                                <!-- <div class="checkbox"> -->
-                                <!-- <label> -->
-                                    <input type="checkbox" name="NewsPinned" id="NewsPinned" value="1">
-                                    <h6>Pin this news?</h6>  
-                                <!-- </label>                                   -->
-                                <!-- </div> -->
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-8 col-md-15">
-                                <input type="submit" class="btn btn-primary btn-lg" value="Create"></input>
-                            </div>
-                        </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-                
-                
+                <?
+                    $result = mysql_query("SELECT * FROM News WHERE NewsHidden = 1 ORDER by NewsID DESC") or die(mysql_error());
+                    while ($query = mysql_fetch_array($result)){                    
+                ?>
+            <div class="panel panel-warning">
+              <div class="panel-heading">
+                    <? echo $query['NewsTitle'] ?> &ensp;
+                      <? include("displayNewsTools_viewHiddenNews.php") ?>
+                  <small class="pull-right">
+                    <? echo $query['NewsDate'] ?>
+                  </small>
+              </div>
+              <div class="panel-body">
+                    <? echo $query['NewsContent'] ?>
+              </div>
             </div>
-           
-           
+            <? } ?>
         </div>
-        
-       
-        
     </div>
-    </body>
+</body>
 </html>
