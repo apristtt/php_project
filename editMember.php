@@ -35,8 +35,8 @@
 	<?php 
 		include("conf.php");
 
-		if($_GET['memberID'] != "") {
-		$memberID = $_GET['memberID'];
+		if($_REQUEST['memberID'] != "") {
+		$memberID = $_REQUEST['memberID'];
 		$result = mysql_query("SELECT * FROM Member WHERE MemberID = '$memberID'") or die(mysql_error());
 		$query = mysql_fetch_array($result);
 
@@ -114,6 +114,7 @@
                                 <!-- <button type="submit" class="btn btn-success btn-lg" name="submitEdit">Edit</button> -->
                             </div>
                         	</div>
+                        	<input name="memberID" type="hidden" id="memberID" value="<?=$_REQUEST['memberID']?>">
 						</form>
 					</div>
 				</div>

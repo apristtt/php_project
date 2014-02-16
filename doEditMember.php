@@ -23,7 +23,7 @@
 		
 		// } else {
 		if($_POST['submitEdit']){
-			$memberID = $_GET['memberID'];
+			$memberID = $_REQUEST['memberID'];
 			$MemberName = $_POST['MemberName'];
 			$MemberEmail = $_POST['MemberEmail'];
 			$MemberPassword = $_POST['MemberPassword'];
@@ -33,7 +33,7 @@
 		}
 		// }
 	// }
-        		echo $_GET['memberID'];
+        		echo $_REQUEST['memberID'];
                 echo $MemberName = $_POST['MemberName'];
                 
  ?>

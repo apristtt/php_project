@@ -96,14 +96,32 @@
                     $result = mysql_query("SELECT * FROM News ORDER by NewsID DESC") or die(mysql_error());
 
                     while ($query = mysql_fetch_array($result)){
-                        echo "<div class='panel panel-info'>".
-                        "<div class='panel-heading'>$query[NewsTitle]".
-                        "<small class='pull-right'> Posted on $query[NewsDate]</small></div>".
-                        "<div class='panel-body'>$query[NewsContent]</div>".
-                        "<div class='panel-footer'>Comments <a href='readNews.php?NewsID=$query[NewsID]'>".
-                        "<small class='pull-right'>Read more &raquo;</small></a></div></div><hr>";
-                    }
+                        // echo "<div class='panel panel-info'>".
+                        // "<div class='panel-heading'>$query[NewsTitle]".
+                        // "<small class='pull-right'> Posted on $query[NewsDate]</small></div>".
+                        // "<div class='panel-body'>$query[NewsContent]</div>".
+                        // "<div class='panel-footer'>Comments".
+                        // "<a href='readNews.php?NewsID=$query[NewsID]'>".
+                        // "<small class='pull-right'>Read more &raquo;</small></a></div></div><hr>";
+                    
                 ?>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <? echo $query['NewsTitle'] ?>
+                        <small class="pull-right"> Posted on <? echo $query['NewsDate'] ?></small>
+                    </div>
+                    <div class="panel-body">
+                        <? echo $query['NewsContent'] ?>
+                    </div>
+                    <div class="panel-footer">Comments
+                        <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
+                            <small class='pull-right'>Read more &raquo;</small>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <? } ?>
                    <!-- <div class="panel panel-info">
                     <div class="panel-heading"><? echo $query['NewsTitle'] ?> <small class="pull-right">Posted on <? echo $query['NewsDate'] ?></small></div>
                         <div class="panel-body">

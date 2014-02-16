@@ -103,7 +103,7 @@
                 </div>
             </div> -->
            
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Member List</div>
                 <table class="table table-striped">
                     <thead>
@@ -131,9 +131,9 @@
                                 "<td><a href='editMember.php?memberID=$query[MemberID]'>".
                                 "<button class='btn btn-success'><span class='glyphicon glyphicon-pencil'>".
                                 "</span></button></a> &nbsp;".
-                                "<a href='#' role='button' class='dropdown-toggle' data-toggle='modal' data-target='#editModal'>".
-                                "<button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'>".
-                                "</span></button></a> &nbsp;".
+                                // "<a href='#' role='button' class='dropdown-toggle' data-toggle='modal' data-target='#editModal'>".
+                                // "<button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'>".
+                                // "</span></button></a> &nbsp;".
                                 "<a href='doDeleteMember.php?memberID=$query[MemberID]'>".
                                 "<button class='btn btn-danger'><span class='glyphicon glyphicon-trash'>".
                                 "</span></button></a></td></tr>";
