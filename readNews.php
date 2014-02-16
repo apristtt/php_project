@@ -37,7 +37,6 @@
         //$memberID = "";
         if($_REQUEST['NewsID'] != "") {
             $NewsID = $_REQUEST['NewsID'];
-           // $sql = "SELECT * FROM member WHERE MemberID = '$memberID'";
             $result = mysql_query("SELECT * FROM News WHERE NewsID = $NewsID") or die(mysql_error());
             $query = mysql_fetch_array($result);
             //echo $NewsID;

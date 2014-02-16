@@ -81,8 +81,7 @@
                     <tbody>
                         <?php
                             include("conf.php");
-                            $sql = "SELECT MemberID, MemberName, MemberEmail, MemberJoinDate FROM Member";
-                            $result = mysql_query($sql) or die(mysql_error());
+                            $result = mysql_query("SELECT MemberID, MemberName, MemberEmail, MemberJoinDate FROM Member") or die(mysql_error());
 
                             while($query = mysql_fetch_array($result)){
 

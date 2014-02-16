@@ -1,6 +1,7 @@
 <?php 
 	include("conf.php");
 
+	$NewsID = $_REQUEST['NewsID'];
 	$NewsTitle = $_POST['NewsTitle'];
 	$NewsContent = $_POST['NewsContent'];
 	// $NewsPinned = $_POST['NewsPinned'];
@@ -20,9 +21,8 @@
 		echo "<a href='javascript: history.go(-1)'>&larr; Back</a>";
 		// echo $_POST['NewsPinned'];
 	} else {
-		// $sql = ;
-		$query = mysql_query("INSERT INTO News (NewsTitle, NewsContent, NewsPinned) VALUES ('$NewsTitle', '$NewsContent', '$NewsPinned')") or die(mysql_error());
+		$query = mysql_query("UPDATE News SET NewsTitle = '$NewsTitle', NewsContent = '$NewsContent', NewsPinned = '$NewsPinned' WHERE NewsID = '$NewsID'") or die(mysql_error());
 		echo '<script type="text/javascript">'.
-		"alert('Content Created!'); document.location = 'home.php'</script>";
+		"alert('News Edited!'); document.location = 'home.php'</script>";
 	}
  ?>
