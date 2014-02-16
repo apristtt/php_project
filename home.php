@@ -84,7 +84,7 @@
             <div class="col-lg-9">
 
                 <?
-                    $result = mysql_query("SELECT * FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
+                    $result = mysql_query("SELECT NewsID, NewsTitle, SUBSTRING(NewsContent, 1, 250) AS NewsContentSubString, NewsDate FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
                     while ($query = mysql_fetch_array($result)){                    
                 ?>
                     <div class="panel panel-success">
@@ -96,9 +96,10 @@
                             </small>
                         </div>
                         <div class="panel-body">
-                            <? echo $query['NewsContent'] ?>
+                            <? echo $query['NewsContentSubString'] ?>
                         </div>
-                        <div class="panel-footer">Comments
+                        <div class="panel-footer">
+                        <span class="label label-primary">0 Comments</span>
                             <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
                                 <small class='pull-right'>Read more &raquo;</small>
                             </a>
@@ -106,7 +107,7 @@
                     </div>
                 <? } ?>
                 <?
-                    $result = mysql_query("SELECT * FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
+                    $result = mysql_query("SELECT NewsID, NewsTitle, SUBSTRING(NewsContent, 1, 250) AS NewsContentSubString, NewsDate FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
                     while ($query = mysql_fetch_array($result)){                    
                 ?>
                     <div class="panel panel-info">
@@ -118,9 +119,10 @@
                             </small>
                         </div>
                         <div class="panel-body">
-                            <? echo $query['NewsContent'] ?>
+                            <? echo $query['NewsContentSubString'] ?>
                         </div>
-                        <div class="panel-footer">Comments
+                        <div class="panel-footer">
+                        <span class="label label-primary">0 Comments</span>
                             <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
                                 <small class='pull-right'>Read more &raquo;</small>
                             </a>

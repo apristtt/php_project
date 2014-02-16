@@ -81,6 +81,13 @@
               <div class="panel-body">
                     <? echo $query['NewsContent'] ?>
               </div>
+              <div class="panel-footer">
+                    <a href="doUnhidden.php?NewsID=<? echo $query['NewsID'] ?>">
+                        <button type="button" class="btn btn-success btn-xs">
+                            <span class="glyphicon glyphicon-eye-open"></span> Unhidden this post
+                        </button>
+                    </a>
+              </div>
             </div>
             <? } ?>
         </div>

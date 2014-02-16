@@ -64,44 +64,6 @@
     
     <div class="container">
         <div class="row">
-            
-<!--<div class="col-xs-12 col-sm-9">-->
-            <!-- <div class="col-lg-9">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Heading ($newsHead) <small class="pull-right">Posted on $postedDate</small></div>
-                    <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis libero iaculis, consequat nunc in, consectetur elit. Vestibulum consectetur velit sit amet mattis iaculis. Sed eget risus elit. Cras vehicula arcu ipsum, sed suscipit ligula fermentum at. Mauris porta dui ac ante mattis, hendrerit tristique eros interdum. Pellentesque semper tellus id metus facilisis convallis. Nam varius eu sapien quis tincidunt. Suspendisse lorem turpis, bibendum sit amet libero vitae, tincidunt mattis mauris. Nunc aliquam orci quis dolor placerat cursus.
-                    </div>
-                </div>
-                <div class="page-header">
-                    <h3>Comments</h3>
-                </div>
-                <div class="media">
-                    <a class="pull-left">
-                        <img src="http://graph.facebook.com/zuck/picture?type=normal" class="media-object img-circle">
-                    </a>
-                    <div class="media-body">
-                        <textarea class="form-control" rows="5" width="100%"></textarea>
-                        <button type="button" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px;">Submit</button>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <p class="lead">
-                            Great!
-                        </p>
-                    </div>
-                    <div class="panel-footer panel-success">
-                        <ul class="list-inline">
-                            <li class="pull-left"><img src="http://graph.facebook.com/chutchartpower/picture?width=25&height=25" class="media-object"> 
-                        </li>
-                            <li>By <b>Chutchart Power</b></li>
-                            <li class="pull-right"><small>Posted on tomorrow</small></li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div> -->
            
             <div class="panel panel-primary">
                 <div class="panel-heading">Member List</div>
@@ -129,13 +91,13 @@
                                 "<td>$query[MemberEmail]</td>".
                                 "<td>$query[MemberJoinDate]</td>".
                                 "<td><a href='editMember.php?memberID=$query[MemberID]'>".
-                                "<button class='btn btn-success'><span class='glyphicon glyphicon-pencil'>".
+                                "<button class='btn btn-success btn-xs'><span class='glyphicon glyphicon-pencil'>".
                                 "</span></button></a> &nbsp;".
                                 // "<a href='#' role='button' class='dropdown-toggle' data-toggle='modal' data-target='#editModal'>".
                                 // "<button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'>".
                                 // "</span></button></a> &nbsp;".
                                 "<a href='doDeleteMember.php?memberID=$query[MemberID]'>".
-                                "<button class='btn btn-danger'><span class='glyphicon glyphicon-trash'>".
+                                "<button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'>".
                                 "</span></button></a></td></tr>";
                             }
                         ?>
@@ -143,24 +105,6 @@
                 </table>
             </div>
 
-          <!--    <div class="col-lg-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">
-                    <h4 class="list-group-item-heading">News 1</h4>
-                    <p class="list-group-item-text">Today is thursday.</p></a>
-                
-                    <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">News 2</h4>
-                    <p class="list-group-item-text">Today is thursday.</p></a>
-                         
-                    <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">News 3</h4>
-                    <p class="list-group-item-text">Today is thursday.</p></a>
-                              
-                    <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">News 4</h4>
-                    <p class="list-group-item-text">Today is thursday.</p></a>
-                </div> -->
             </div>
             
         </div>

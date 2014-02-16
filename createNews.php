@@ -65,12 +65,12 @@
     <div class="container">
         <div class="row">
             <div class="page-header">
-                    <h3>Create New Content</h3>
+                    <h3>Create News</h3>
             </div>
                 <div class="panel panel-info">
                     <div class="panel-body">
                         <div class="container">
-                        <form class="form-horizontal" action="doCreateContent.php" method="POST" role="form">
+                        <form class="form-horizontal" action="doCreateNews.php" method="POST" role="form">
                         <div class="form-group">
                             <label for="title" class="col-md-8 control-label">Title</label>
                                 <div class="col-md-15">
@@ -84,15 +84,18 @@
                                 </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-offset-3 col-md-15">
-                                <!-- <div class="checkbox"> -->
-                                <!-- <label> -->
-                                    <input type="checkbox" name="NewsPinned" id="NewsPinned" value="1">
-                                    <h6>Pin this news?</h6>  
-                                <!-- </label>                                   -->
-                                <!-- </div> -->
+                            <div class="col-md-offset-8 col-md-12">
+                                <div class="checkbox">
+                                    <label>
+                                        <ul class="list-inline">
+                                            <li><input type="checkbox" name="NewsPinned" id="NewsPinned" style="width:0px;" value="1"></li>
+                                            <li>Pin this news</li>
+                                        </ul>
+                                    </label>
+                                </div>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="col-md-offset-8 col-md-15">
                                 <input type="submit" class="btn btn-primary btn-lg" value="Create"></input>

@@ -3,9 +3,9 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="form-group">
-                        <a href="createContent.php">
+                        <a href="createNews.php">
                             <button type="button" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-pencil"></span> Create Content
+                                <span class="glyphicon glyphicon-pencil"></span> Create News
                             </button>
                         </a>
                         </div>
@@ -31,7 +31,7 @@
 
                         while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
                             echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".
-                            "<h4 class='list-group-item-heading'>$queryRecentNews[NewsTitle]</h4></a>";
+                            "<p class='list-group-item-text'>$queryRecentNews[NewsTitle]</p></a>";
                         }
 
                     ?>
@@ -46,7 +46,7 @@
 
                         while($queryPinnedNews = mysql_fetch_array($resultPinnedNews)) {
                             echo "<a href='readNews.php?NewsID=$queryPinnedNews[NewsID]' class='list-group-item'>".
-                            "<h4 class='list-group-item-heading'>$queryPinnedNews[NewsTitle]</h4></a>";
+                            "<p class='list-group-item-text'>$queryPinnedNews[NewsTitle]</p></a>";
                         }
 
                     ?>
