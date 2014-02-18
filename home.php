@@ -88,6 +88,7 @@
         <div class="row">
 <!--            <div class="col-xs-12 col-sm-9">-->
             <div class="col-lg-9">
+                <? include("displayNewsPinned.php") ?>
                 <? include("displayNews.php") ?>
             </div>
            

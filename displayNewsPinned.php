@@ -1,8 +1,8 @@
                 <?
-                    $result = mysql_query("SELECT NewsID, NewsPinned, NewsHidden, NewsTitle, SUBSTRING(NewsContent, 1, 250) AS NewsContentSubString, NewsDate FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT") or die(mysql_error());
+                    $result = mysql_query("SELECT NewsID, NewsPinned, NewsHidden, NewsTitle, SUBSTRING(NewsContent, 1, 250) AS NewsContentSubString, NewsDate FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT 3") or die(mysql_error());
                     while ($query = mysql_fetch_array($result)){                    
                 ?>
-                    <div class="panel panel-info">
+                    <div class="panel panel-success">
                         <div class="panel-heading">
                             <? echo $query['NewsTitle'] ?> &ensp;
                                 <? include ("displayNewsTools.php") ?>

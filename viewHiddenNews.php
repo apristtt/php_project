@@ -73,7 +73,7 @@
             <div class="panel panel-warning">
               <div class="panel-heading">
                     <? echo $query['NewsTitle'] ?> &ensp;
-                      <? include("displayNewsTools.php") ?>
+                      <!-- <? //include("displayNewsTools.php") ?> -->
                   <small class="pull-right">
                     <? echo $query['NewsDate'] ?>
                   </small>
@@ -82,10 +82,34 @@
                     <? echo $query['NewsContent'] ?>
               </div>
               <div class="panel-footer">
-                    <a href="doUnhidden.php?NewsID=<? echo $query['NewsID'] ?>">
+<!--                     <a href="doUnhidden.php?NewsID=<? // echo $query['NewsID'] ?>">
                         <button type="button" class="btn btn-success btn-xs">
                             <span class="glyphicon glyphicon-eye-open"></span> Unhidden this post
                         </button>
+                    </a> -->
+                    <? if($query['NewsPinned'] == "1") { ?>
+                        <a href="doUnpinNews.php?NewsID=<? echo $query['NewsID'] ?>">
+                            <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pushpin"></span> Unpin this news</button>
+                        </a>
+                    <? } else { ?>
+                        <a href="doPinNews.php?NewsID=<? echo $query['NewsID'] ?>">
+                            <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pushpin"></span> Pin this news</button>
+                        </a>
+                    <? } ?>
+                    <? if($query['NewsHidden'] == "1") { ?>
+                        <a href="doUnhidden.php?NewsID=<? echo $query['NewsID'] ?>">
+                            <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Unhidden this news</button>
+                        </a>
+                    <? } else { ?>
+                        <a href="doHidden.php?NewsID=<? echo $query['NewsID'] ?>">
+                            <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-close"></span> Hide this news</button>
+                        </a>   
+                    <? } ?>
+                    <a href="editNews.php?NewsID=<? echo $query['NewsID'] ?>">
+                        <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit this news</button>
+                    </a>
+                    <a href="doDeleteNews.php?NewsID=<? echo $query['NewsID'] ?>">
+                        <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete this news</button>
                     </a>
               </div>
             </div>

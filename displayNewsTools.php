@@ -4,7 +4,11 @@
                                 // $result = mysql_query("SELECT * FROM News WHERE NewsID = '$NewsID'") or die(mysql_error());
                                 // while ($query = mysql_fetch_array($result)){
                             ?> -->
-                            <span class="label label-warning">
+                            <? if ($query['NewsPinned']=='1') { ?>
+                            <span class="label label-success">
+                            <? } else {?>
+                            <span class="label label-info">
+                            <? } ?>
                             <?  if ($query['NewsPinned']=='1') { ?>
                                 <a href="doUnpinNews.php?NewsID=<? echo $query['NewsID'] ?>" style="color:#FFFFFF;">
                                     <span class="glyphicon glyphicon-pushpin"></span>
