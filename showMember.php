@@ -20,7 +20,7 @@
 			
 		<?php 
 		echo "<hr>";
-		include("conf.php");
+		require("conf.php");
 		$sql = "SELECT * FROM Member";
 		$result = mysql_query($sql);
 		

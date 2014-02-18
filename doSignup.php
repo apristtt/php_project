@@ -1,5 +1,5 @@
 <?php 
-	include("conf.php");
+	require("conf.php");
 	$MemberName = $_POST['MemberName'];
 	$MemberEmail = $_POST['MemberEmail'];
 	$MemberPassword = $_POST['MemberPassword'];

@@ -13,7 +13,7 @@
 			echo "You are not logged in!<br>";
 			header("Refresh:5; url=home.php");
 		} else {
- 			include("conf.php");
+ 			require("conf.php");
  			$result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'");
  			while ($query = mysql_fetch_array($result)) {
 	 			echo "Member ID : $query[MemberID] <br>".

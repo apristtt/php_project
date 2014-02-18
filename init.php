@@ -1,0 +1,3 @@
+<?php 
+	$displaySiteReset = "0";
+ ?>

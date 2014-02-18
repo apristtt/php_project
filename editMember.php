@@ -33,7 +33,7 @@
 </head>
 <body>
 	<?php 
-		include("conf.php");
+		require("conf.php");
 
 		if($_REQUEST['memberID'] != "") {
 		$memberID = $_REQUEST['memberID'];

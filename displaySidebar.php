@@ -11,7 +11,7 @@
                         </div>
                         <div class="form-group">
                         <?
-                            $queryTotalHiddenNews = mysql_query("SELECT * FROM News WHERE NewsHidden = 1") or die(mysql_error());
+                            $queryTotalHiddenNews = mysql_query("SELECT * FROM News WHERE NewsHidden = 1 LIMIT 5") or die(mysql_error());
                             $numTotalHiddenNews = mysql_num_rows($queryTotalHiddenNews);
                         ?>
                         <a href="viewHiddenNews.php">
@@ -27,7 +27,7 @@
                 <div class="list-group">
 
                     <?php
-                        $resultPinnedNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
+                        $resultPinnedNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT 5") or die(mysql_error());
 
                         while($queryPinnedNews = mysql_fetch_array($resultPinnedNews)) {
                             echo "<a href='readNews.php?NewsID=$queryPinnedNews[NewsID]' class='list-group-item'>".

@@ -1,5 +1,5 @@
 <?php 
-	include("conf.php");
+	require("conf.php");
 
 	$NewsID = $_REQUEST['NewsID'];
 	$NewsTitle = $_POST['NewsTitle'];

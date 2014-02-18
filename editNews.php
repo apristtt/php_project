@@ -40,7 +40,7 @@
     //         echo "checked";
     //     }
     // }
-        include("conf.php");
+        require("conf.php");
 
         if($_REQUEST['NewsID'] != "") {
         $NewsID = $_REQUEST['NewsID'];

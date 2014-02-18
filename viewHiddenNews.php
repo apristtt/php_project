@@ -32,7 +32,7 @@
     <script type="text/javascript" src="js/source/tooltip.js"></script>
     </head>
 <body>
-<? include("conf.php"); ?>
+<? require("conf.php"); ?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <ul class="nav navbar-nav">

@@ -80,7 +80,7 @@
 
                     <tbody>
                         <?php
-                            include("conf.php");
+                            require("conf.php");
                             $result = mysql_query("SELECT MemberID, MemberName, MemberEmail, MemberJoinDate FROM Member") or die(mysql_error());
 
                             while($query = mysql_fetch_array($result)){

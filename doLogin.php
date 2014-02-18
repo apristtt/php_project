@@ -1,5 +1,5 @@
 <?php 
-	include("conf.php");
+	require("conf.php");
 	session_start();
 	$MemberName = $_POST['MemberName'];
 	$MemberPassword = $_POST['MemberPassword'];

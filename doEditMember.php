@@ -1,5 +1,5 @@
 <?php 
-	include("conf.php");
+	require("conf.php");
 	
 
         

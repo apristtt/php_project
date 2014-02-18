@@ -34,7 +34,8 @@
 <body>
     <?php
         session_start(); 
-        include("conf.php"); 
+        require("conf.php"); 
+        require("init.php");
         if (isset($MemberSessionID)){
             $MemberSessionID = $_SESSION['MemberSessionID'];
         } elseif (isset($MemberName)) {
@@ -79,57 +80,15 @@
     </nav>
     
     <div class="container">
+    <? if($displaySiteReset == "1") { ?>
+        <div class="alert alert-danger">
+            <strong>Warning :</strong> You have turned on site reset mode, with this mode can reset your site. You can turn off this message by changing <kbd>$displaySiteReset</kbd> to <kbd>0</kbd> in file <kbd>init.php</kbd>
+        </div>
+    <? } ?>
         <div class="row">
 <!--            <div class="col-xs-12 col-sm-9">-->
             <div class="col-lg-9">
-
-                <?
-                    $result = mysql_query("SELECT NewsID, NewsPinned, NewsHidden, NewsTitle, SUBSTRING(NewsContent, 1, 250) AS NewsContentSubString, NewsDate FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
-                    while ($query = mysql_fetch_array($result)){                    
-                ?>
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <? echo $query['NewsTitle'] ?> &ensp;
-                                <? include ("displayNewsTools.php") ?>
-                            <small class="pull-right">
-                                Posted on <? echo $query['NewsDate'] ?>
-                            </small>
-                        </div>
-                        <div class="panel-body">
-                            <? echo $query['NewsContentSubString'] ?>
-                        </div>
-                        <div class="panel-footer">
-                        <span class="label label-primary">0 Comments</span>
-                            <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
-                                <small class='pull-right'>Read more &raquo;</small>
-                            </a>
-                        </div>
-                    </div>
-                <? } ?>
-                <?
-                    $result = mysql_query("SELECT NewsID, NewsPinned, NewsHidden, NewsTitle, SUBSTRING(NewsContent, 1, 250) AS NewsContentSubString, NewsDate FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
-                    while ($query = mysql_fetch_array($result)){                    
-                ?>
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <? echo $query['NewsTitle'] ?> &ensp;
-                                <? include ("displayNewsTools.php") ?>
-                            <small class="pull-right">
-                                Posted on <? echo $query['NewsDate'] ?>
-                            </small>
-                        </div>
-                        <div class="panel-body">
-                            <? echo $query['NewsContentSubString'] ?>
-                        </div>
-                        <div class="panel-footer">
-                        <span class="label label-primary">0 Comments</span>
-                            <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
-                                <small class='pull-right'>Read more &raquo;</small>
-                            </a>
-                        </div>
-                    </div>
-                <? } ?>
-
+                <? include("displayNews.php") ?>
             </div>
            
             <? include("displaySidebar.php") ?>
@@ -230,5 +189,12 @@
         </div>
     </div>
 </div>
-    
-    </body>
+<? if($displaySiteReset == "1") {?>
+    <nav class="navbar navbar-default navbar-fixed-bottom" style="opacity: 0.7;" role="navigation">
+        <div class="container">
+            <button class="btn btn-danger navbar-btn pull-right"><span class="glyphicon glyphicon-cog"></span> Reset</button>
+        </div>
+    </nav>
+<? } ?>
+</body>
+</html>
