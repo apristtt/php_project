@@ -22,7 +22,11 @@
 	// } elseif($_POST['submitEdit']){
 		
 		// } else {
-		if($_POST['submitEdit']){
+	if (empty($_POST['submitEdit'])) {
+			echo '<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css">';
+            echo '<div class="container alert alert-danger">Incorrect access</div>';
+		} elseif($_POST['submitEdit']){
 			$memberID = $_REQUEST['memberID'];
 			$MemberName = $_POST['MemberName'];
 			$MemberEmail = $_POST['MemberEmail'];
@@ -30,7 +34,7 @@
 			mysql_query("UPDATE Member SET MemberName = '$MemberName', MemberEmail = '$MemberEmail', MemberPassword = '$MemberPassword' WHERE MemberID = '$memberID'") or die(mysql_error());
 			echo '<script type="text/javascript">'.
 			"alert('Edited!'); document.location = 'member.php'</script>";
-		}
+		} 
 		// }
 	// }
         		echo $_REQUEST['memberID'];

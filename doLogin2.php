@@ -24,6 +24,11 @@
 	 			"Member Email : $query[MemberEmail] <br>".
 	 			"Member Joined on : $query[MemberJoinDate] <br>";
  			}
+ 			if ($query['MemberIsAdmin']='1'){
+ 				echo "You are admin";
+ 			} else {
+ 				echo "You are member";
+ 			}
  			echo "<a href='doLogout.php'>Logout</a>";
  		}
  	 ?>

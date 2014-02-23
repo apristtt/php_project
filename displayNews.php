@@ -1,5 +1,5 @@
                 <?
-                $result = mysql_query("SELECT COUNT(*) FROM News") or die(mysql_error());
+                $result = mysql_query("SELECT COUNT(*) FROM News WHERE NewsPinned = 0") or die(mysql_error());
                 $totalrecord = mysql_result($result, 0,0);
                 $p_size = 7;
                 $totalpage = (int)($totalrecord/$p_size);
@@ -29,7 +29,7 @@
                             <? echo $query['NewsContentSubString'] ?>
                         </div>
                         <div class="panel-footer">
-                        <span class="label label-primary">0 Comments</span>
+                        <span class="label label-primary"><span class="glyphicon glyphicon-comment"></span> 0</span>
                             <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
                                 <small class='pull-right'>Read more &raquo;</small>
                             </a>

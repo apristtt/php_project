@@ -1,4 +1,6 @@
+            <? $result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'") or die(mysql_error()); ?>
             <div class="col-lg-3">
+            <? if($query['MemberIsAdmin']='1') { ?>
                 <h4>Site Management</h4>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -22,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-
+            <? } else { return false; } ?>
                 <h4>Pinned News</h4>
                 <div class="list-group">
 

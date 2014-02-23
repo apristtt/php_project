@@ -120,7 +120,8 @@
                 "Member ID : $query[MemberID] <br>".
                 "Member Name : $query[MemberName] <br>".
                 "Member Email : $query[MemberEmail] <br>".
-                "Member Joined on : $query[MemberJoinDate]".
+                "Member Joined on : $query[MemberJoinDate] <br>".
+                "Is Admin (0 is no, 1 is yes) : $query[MemberIsAdmin]".
                 "<a href='doLogout.php' class='pull-right'>Logout</a></p>"; ?>
              <!--    <p class="alert alert-info">
                     Member ID : <? // $query['MemberID'] ?>
@@ -161,7 +162,11 @@
         <div class="row">
 <!--            <div class="col-xs-12 col-sm-9">-->
             <div class="col-lg-9">
-                <? include("displayNewsPinned.php") ?>
+                <? 
+                    if(empty($_GET['page'])) {
+                        include("displayNewsPinned.php");
+                    }
+                ?>
                 <? include("displayNews.php") ?>
             </div>
            
@@ -263,6 +268,35 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <form action="doSearch.php" method="POST">
+                        <div class="input-group">
+                          <input type="text" class="form-control input-lg" style="width:510px;" placeholder="Search" name="searchQuery">
+                          <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+                          </span>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+           <!--  <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
 <? if(displaySiteReset == "1") {?>
     <nav class="navbar navbar-default navbar-fixed-bottom" style="opacity: 0.7;" role="navigation">
         <div class="container">

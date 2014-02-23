@@ -35,15 +35,15 @@
     <?php 
         require("conf.php");
         //$memberID = "";
-        if($_REQUEST['NewsID'] != "") {
+        if(empty($_REQUEST['NewsID'])) {
+            echo '<div class="container alert alert-danger">Incorrect access</div>';
+        } elseif($_REQUEST['NewsID'] != "") {
             $NewsID = $_REQUEST['NewsID'];
             $result = mysql_query("SELECT * FROM News WHERE NewsID = $NewsID") or die(mysql_error());
             $query = mysql_fetch_array($result);
+            session_start();
             //echo $NewsID;
-        } else {
-            echo "Incorrect access";
-        }
-        ?>
+            ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <ul class="nav navbar-nav">
@@ -239,5 +239,7 @@
         </div>
     </div>
 </div>
-    
+         <?   }
+        ?>
     </body>
+    </html>

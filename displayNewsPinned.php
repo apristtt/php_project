@@ -14,7 +14,7 @@
                             <? echo $query['NewsContentSubString'] ?>
                         </div>
                         <div class="panel-footer">
-                        <span class="label label-primary">0 Comments</span>
+                        <span class="label label-primary"><span class="glyphicon glyphicon-comment"></span> 0</span>
                             <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">
                                 <small class='pull-right'>Read more &raquo;</small>
                             </a>
