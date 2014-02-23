@@ -1,6 +1,7 @@
-            <? $result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'") or die(mysql_error()); ?>
+            <!-- <? //$result = mysql_query("SELECT * FROM Member WHERE MemberName = 'isset($_SESSION[MemberName])'") or die(mysql_error()); ?> -->
             <div class="col-lg-3">
-            <? if($query['MemberIsAdmin']='1') { ?>
+            <? if(isset($MemberSessionID)<>session_id() or empty($MemberName)){ ?>
+            <!-- <? //if($query['MemberIsAdmin']='1') { ?> -->
                 <h4>Site Management</h4>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -24,7 +25,8 @@
                         </div>
                     </div>
                 </div>
-            <? } else { return false; } ?>
+            <!-- <? // } else {  } ?> -->
+            <? } ?>
                 <h4>Pinned News</h4>
                 <div class="list-group">
 
@@ -44,7 +46,7 @@
                 <div class="list-group">
 
                     <?php
-                        $resultRecentNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC") or die(mysql_error());
+                        $resultRecentNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT 5") or die(mysql_error());
 
                         while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
                             echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".

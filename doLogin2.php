@@ -6,12 +6,26 @@
  </head>
  <body>
  	<?php 
+ 	class member
+ 	{
+ 		function displayMemberInfo()
+ 		{
+ 			echo "Member ID : $query[MemberID] <br>".
+	 			"Member Name : $query[MemberName] <br>".
+	 			"Member Email : $query[MemberEmail] <br>".
+	 			"Member Joined on : $query[MemberJoinDate] <br>";
+ 		}
+ 	}
  		// if (isset($_SESSION)) {
  			session_start();
+ 			$displayInfo = new member();
+
  		// }
 
-		$MemberSessionID = $_SESSION['MemberSessionID'];
-		$MemberName = $_SESSION['MemberName'];
+ 		$MemberSessionID = isset($_SESSION['MemberSessionID']);
+		$MemberName = isset($_SESSION['MemberName']);
+		// $MemberIsAdmin = $_SESSION['MemberIsAdmin'];
+
 		if($MemberSessionID<>session_id() or $MemberName ==""){
 			echo "You are not logged in!<br>";
 			//header("Refresh:5; url=home.php");
@@ -19,18 +33,32 @@
  			require("conf.php");
  			$result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'");
  			while ($query = mysql_fetch_array($result)) {
-	 			echo "Member ID : $query[MemberID] <br>".
+	 			if($query['MemberIsAdmin']==1){
+	 					echo "You are admin<br>";
+	 					$_SESSION['MemberIsAdmin'] = '1';
+	 					// $displayInfo->displayMemberInfo();
+	 					echo "Member ID : $query[MemberID] <br>".
 	 			"Member Name : $query[MemberName] <br>".
 	 			"Member Email : $query[MemberEmail] <br>".
 	 			"Member Joined on : $query[MemberJoinDate] <br>";
- 			}
- 			if ($query['MemberIsAdmin']='1'){
- 				echo "You are admin";
- 			} else {
- 				echo "You are member";
- 			}
+
+	 			} elseif($query['MemberIsAdmin'] ==0) {
+	 					echo "You are member<br>";
+	 					$_SESSION['MemberIsAdmin'] = '0';
+	 					// $this->displayMemberInfo();
+	 					echo "Member ID : $query[MemberID] <br>".
+	 			"Member Name : $query[MemberName] <br>".
+	 			"Member Email : $query[MemberEmail] <br>".
+	 			"Member Joined on : $query[MemberJoinDate] <br>";
+	 			}
+ 			// if ($_SESSION['MemberIsAdmin']=="1"){
+ 				
+ 			// } else {
+ 			// 	echo "You are member";
+ 			// }
  			echo "<a href='doLogout.php'>Logout</a>";
  		}
+ 	}
  	 ?>
  </body>
  </html>

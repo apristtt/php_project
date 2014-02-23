@@ -82,7 +82,7 @@
 		<? 
 			$num = mysql_num_rows($result);
 			if ($num <= 0){
-				echo '<h4 align="center">"Sorry, No result :("</h4>';
+				echo '<div class="panel panel-default panel-body"><h4 align="center">Sorry, No result :(</h4></div>';
 			} else {
 				while($query = mysql_fetch_array($result)){ ?>
 		<div class="panel panel-info" style="box-shadow: 2px 2px 4px #888888;">

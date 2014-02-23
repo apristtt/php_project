@@ -68,6 +68,10 @@
             </div>
                 <?
                     $result = mysql_query("SELECT * FROM News WHERE NewsHidden = 1 ORDER by NewsID DESC") or die(mysql_error());
+                    $num = mysql_num_rows($result);
+                    if ($num <= 0){
+                        echo '<div class="panel panel-default panel-body"><h4 align="center">Oops! No hidden news.</h4></div>';
+                    }
                     while ($query = mysql_fetch_array($result)){                    
                 ?>
             <div class="panel panel-warning">
