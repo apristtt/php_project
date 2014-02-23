@@ -1,3 +1,3 @@
 <?php 
-	$displaySiteReset = "0";
+	define("displaySiteReset", "0");
  ?>

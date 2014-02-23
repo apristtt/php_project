@@ -31,7 +31,7 @@
 	}
 
 	for($i=1;$i<=$totalpage;$i++){
-		echo "<a href='test_SeperatePage.php?page=".$i."'>Page ".$i."</a><br>";
+		echo "<a href='test_SeperatePage.php?page=".$i."'>".$i."</a>&nbsp;";
 	}
 
  ?>

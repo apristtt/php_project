@@ -40,6 +40,8 @@
             $result = mysql_query("SELECT * FROM News WHERE NewsID = $NewsID") or die(mysql_error());
             $query = mysql_fetch_array($result);
             //echo $NewsID;
+        } else {
+            echo "Incorrect access";
         }
         ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

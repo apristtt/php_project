@@ -6,12 +6,15 @@
  </head>
  <body>
  	<?php 
-	 	session_start();
+ 		// if (isset($_SESSION)) {
+ 			session_start();
+ 		// }
+
 		$MemberSessionID = $_SESSION['MemberSessionID'];
 		$MemberName = $_SESSION['MemberName'];
 		if($MemberSessionID<>session_id() or $MemberName ==""){
 			echo "You are not logged in!<br>";
-			header("Refresh:5; url=home.php");
+			//header("Refresh:5; url=home.php");
 		} else {
  			require("conf.php");
  			$result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'");

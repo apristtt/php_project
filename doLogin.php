@@ -21,7 +21,8 @@
 		} else {			
 			$_SESSION['MemberSessionID'] = session_id();
 			$_SESSION['MemberName'] = $MemberName;
-			header("Location:doLogin2.php");
+			// header("Location:doLogin2.php");
+			header("Location:home.php");
 			while ($query = mysql_fetch_array($result)) {
 				echo "Welcome <b>$query[MemberName]</b> your no is <u>$query[MemberID]</u>";
 			}

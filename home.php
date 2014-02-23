@@ -33,22 +33,24 @@
     </head>
 <body>
     <?php
-        session_start(); 
+        
         require("conf.php"); 
         require("init.php");
-        if (isset($MemberSessionID)){
-            $MemberSessionID = $_SESSION['MemberSessionID'];
-        } elseif (isset($MemberName)) {
-            $MemberName = $_SESSION['MemberName'];
-        } elseif (isset($MemberSessionID)) {
+        // if (isset($MemberSessionID)){
+        //     $MemberSessionID = $_SESSION['MemberSessionID'];
+        // } elseif (isset($MemberName)) {
+        //     $MemberName = $_SESSION['MemberName'];
+        // } elseif (isset($MemberSessionID)) {
         
-            if($MemberSessionID<>session_id() or $MemberName ==""){
-                echo "Not Login";
-            } else {
-                echo "Login";
-            }
+        //     if($MemberSessionID<>session_id() or $MemberName ==""){
+        //         echo "Not Login";
+        //     } else {
+        //         echo "Login";
+        //     }
 
-        }
+        // }
+
+
     ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -80,7 +82,78 @@
     </nav>
     
     <div class="container">
-    <? if($displaySiteReset == "1") { ?>
+
+<?
+    // if(! isset($_SESSION)){
+    session_start(); 
+    // }
+
+    // $status = session_status();
+
+    // if($status > 1){
+    //     session_destroy();
+    // }
+    // if (isset($MemberSessionID)){
+            $MemberSessionID = $_SESSION['MemberSessionID'];
+    // }
+    // } elseif (isset($MemberName)) {
+    // if (isset($MemberName)){
+            $MemberName = $_SESSION['MemberName'];
+    // }
+    // } else {
+        if(isset($MemberSessionID)<>session_id() or empty($MemberName)){
+            echo '<p class="alert alert-warning">You are not logged in!</p>';
+            // if (isset($MemberSessionID)){
+            // $MemberSessionID = $_SESSION['MemberSessionID'];
+            // }
+            // if (isset($MemberName)){
+            // $MemberName = $_SESSION['MemberName'];
+            // }
+          //  echo $_SESSION['MemberName'];
+           // header("Refresh:5; url=home.php");
+        } else {
+            require("conf.php");
+            $result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'");
+            //echo $_SESSION['MemberName'];
+            while ($query = mysql_fetch_array($result)) {
+                echo '<p class="alert alert-info">'.
+                "Member ID : $query[MemberID] <br>".
+                "Member Name : $query[MemberName] <br>".
+                "Member Email : $query[MemberEmail] <br>".
+                "Member Joined on : $query[MemberJoinDate]".
+                "<a href='doLogout.php' class='pull-right'>Logout</a></p>"; ?>
+             <!--    <p class="alert alert-info">
+                    Member ID : <? // $query['MemberID'] ?>
+                    <a href="doLogout.php" class="pull-right">Logout</a>
+                </p> -->
+        <?
+            }
+            //echo "<a href='doLogout.php'>Logout</a>";
+        }
+
+       // include ("doLogin2.php");
+    // }
+    ?>
+ <!--        <?php 
+        // session_start();
+        // $MemberSessionID = $_SESSION['MemberSessionID'];
+        // $MemberName = $_SESSION['MemberName'];
+        // if($MemberSessionID<>session_id() or $MemberName ==""){
+        //     echo "You are not logged in!<br>";
+        //     //header("Refresh:5; url=home.php");
+        // } else {
+        //     require("conf.php");
+        //     $result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'");
+        //     while ($query = mysql_fetch_array($result)) {
+        //         echo '<p class="alert alert-info>Member ID : $query[MemberID] <br>'.
+        //         'Member Name : $query[MemberName] <br>'.
+        //         'Member Email : $query[MemberEmail] <br>'.
+        //         'Member Joined on : $query[MemberJoinDate] <br></p>';
+        //     }
+        //     echo "<a href='doLogout.php'>Logout</a>";
+        // }
+     ?> -->
+    <? if(displaySiteReset == "1") { ?>
         <div class="alert alert-danger">
             <strong>Warning :</strong> You have turned on site reset mode, with this mode can reset your site. You can turn off this message by changing <kbd>$displaySiteReset</kbd> to <kbd>0</kbd> in file <kbd>init.php</kbd>
         </div>
@@ -190,7 +263,7 @@
         </div>
     </div>
 </div>
-<? if($displaySiteReset == "1") {?>
+<? if(displaySiteReset == "1") {?>
     <nav class="navbar navbar-default navbar-fixed-bottom" style="opacity: 0.7;" role="navigation">
         <div class="container">
             <button class="btn btn-danger navbar-btn pull-right"><span class="glyphicon glyphicon-cog"></span> Reset</button>
