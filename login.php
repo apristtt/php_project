@@ -33,37 +33,13 @@
     </head>
 <body>
     
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a><span class="label label-success">Logo</span></a>
-                </li>
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#">Test</a></li>
-                <li><a href="#">Another test</a></li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Drop me!<b class="caret"></b></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a>Menu</a></li>
-                    </ul>
-                    </li>
-            </ul>
-    <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href="#" role="button" class="btn" data-toggle="modal" data-target="#searchModal">
-                    <span class="glyphicon glyphicon-search"></span>
-                </a>
-            </li>
-            <li>
-                <a href="#" role="button" class="dropdown-toggle" data-toggle="modal" data-target="#loginModal">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </li>
-    </nav>
+    <? include("displayNavbar.php"); ?>
     
     <div class="container">
         <div class="row">
+        <? if (isset($MemberSessionID)==session_id()) {?>
+            <h4>Already login</h4>
+            <? } elseif(isset($MemberSessionID)<>session_id() or empty($MemberName)) { ?>
             <div class="page-header">
                     <h3>Login</h3>
                 </div>
@@ -93,7 +69,7 @@
                     </div>
                 </div>
                 
-                
+            <? } ?>
             </div>
            
            
@@ -101,106 +77,6 @@
         
        
         
-    </div>
-    
-    
-    
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="email" class="col-md-8 control-label">Email Address</label>
-                                <div class="col-md-15">
-                                    <input type="email" class="form-control" placeholder="Email Address">
-                                </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-md-8 control-label">Password</label>
-                                <div class="col-md-15">
-                                    <input type="password" class="form-control" placeholder="Password">
-                                </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-8 col-md-12">
-                                <div class="checkbox">
-                                    <label>
-                                        <ul class="list-inline">
-                                            <li><input type="checkbox" style="width:0px;"></li>
-                                            <li>Remember me?</li>
-                                        </ul>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                      
-                    </form>
-                                       
-                </div>
-                <div class="modal-footer">
-                    <ul class="list-inline">
-                        <li class="pull-left"><h6>Don't have an account? <a href="signup.html"><b>Sign Up!</b></a></h6></li>
-                        <li class="pull-right"><button type="button" class="btn btn-primary">Sign In</button></li>
-                        <li class="pull-right"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="email" class="col-md-8 control-label">Email Address</label>
-                                <div class="col-md-15">
-                                    <input type="email" class="form-control" placeholder="Email Address">
-                                </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-md-8 control-label">Password</label>
-                                <div class="col-md-15">
-                                    <input type="password" class="form-control" placeholder="Password">
-                                </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-8 col-md-12">
-                                <div class="checkbox">
-                                    <label>
-                                        <ul class="list-inline">
-                                            <li><input type="checkbox" style="width:0px;"></li>
-                                            <li>Remember me?</li>
-                                        </ul>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                      
-                    </form>
-                                       
-                </div>
-                <div class="modal-footer">
-                    <ul class="list-inline">
-                        <li class="pull-left"><h6>Don't have an account? <a href="signup.html"><b>Sign Up!</b></a></h6></li>
-                        <li class="pull-right"><button type="button" class="btn btn-primary">Sign In</button></li>
-                        <li class="pull-right"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
     
     </body>

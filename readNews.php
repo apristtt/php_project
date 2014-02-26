@@ -32,6 +32,7 @@
     <script type="text/javascript" src="js/source/tooltip.js"></script>
     </head>
 <body>
+<? include("displayNavbar.php"); ?>
     <?php 
         require("conf.php");
         //$memberID = "";
@@ -41,37 +42,12 @@
             $NewsID = $_REQUEST['NewsID'];
             $result = mysql_query("SELECT * FROM News WHERE NewsID = $NewsID") or die(mysql_error());
             $query = mysql_fetch_array($result);
-            session_start();
+            if(!isset($_SESSION)){
+                session_start();
+            }
             //echo $NewsID;
             ?>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a><span class="label label-success">Logo</span></a>
-                </li>
-                <li class="active"><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="member.php">Member</a></li>
-                <li><a href="#">Another test</a></li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Drop me!<b class="caret"></b></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a>Menu</a></li>
-                    </ul>
-                    </li>
-            </ul>
-    <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href="#" role="button" class="btn" data-toggle="modal" data-target="#searchModal">
-                    <span class="glyphicon glyphicon-search"></span>
-                </a>
-            </li>
-            <li>
-                <a href="#" role="button" class="dropdown-toggle" data-toggle="modal" data-target="#loginModal">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </li>
-    </nav>
+    
     
     <div class="container">
         <div class="row">
@@ -87,6 +63,7 @@
                 ?>
                     <div class="panel-heading"><? echo $query['NewsTitle'] ?> <small class="pull-right">Posted <? echo $query['NewsDate'] ?></small></div>
                     <div class="panel-body"><? echo $query['NewsContent'] ?></div>
+                    <? if(isset($_SESSION['MemberIsAdmin'])=='1') { ?>
                     <div class="panel-footer">
                     <? if($query['NewsPinned'] == "1") { ?>
                         <a href="doUnpinNews.php?NewsID=<? echo $query['NewsID'] ?>">
@@ -113,6 +90,7 @@
                         <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete this news</button>
                     </a>
                     </div>
+                    <? } ?>
                 </div>
                 <div class="page-header">
                     <h3>Comments</h3>

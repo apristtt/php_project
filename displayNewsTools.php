@@ -4,6 +4,7 @@
                                 // $result = mysql_query("SELECT * FROM News WHERE NewsID = '$NewsID'") or die(mysql_error());
                                 // while ($query = mysql_fetch_array($result)){
                             ?> -->
+                        <? if(isset($_SESSION['MemberIsAdmin'])=='1') { ?>
                             <? if ($query['NewsPinned']=='1') { ?>
                             <span class="label label-success">
                             <? } else {?>
@@ -35,4 +36,5 @@
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </span>
+                        <? } ?>
                            <!--  <?  // }   ?> -->
