@@ -100,8 +100,9 @@
                         <img src="http://graph.facebook.com/zuck/picture?type=normal" class="media-object img-circle">
                     </a>
                     <div class="media-body">
-                        <textarea class="form-control" rows="5" width="100%"></textarea>
-                        <button type="button" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px;">Submit</button>
+                        <textarea class="form-control" rows="5" width="100%" name="CommentContent"></textarea>
+                        <input type="submit" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px; width: 80px;   " value="Submit">
+                        <!-- <button type="button" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px;">Submit</button> -->
                     </div>
                 </div>
                 <!-- Comment the mockup -->
@@ -125,6 +126,10 @@
                 
                 <? //$result = mysql_query("SELECT * FROM Comments WHERE NewsID = '$NewsID'");
                 $result = mysql_query("SELECT Member.MemberID, Member.MemberName, Comments.CommentID, Comments.CommentContent, Comments.CommentDate FROM Member INNER JOIN Comments ON Member.MemberID = Comments.MemberID WHERE Comments.NewsID = '$NewsID'");
+                $num = mysql_num_rows($result);
+                if($num <= 0){
+                    echo '<div class="panel panel-default panel-body"><i align="center">No comments</i></div>';
+                }
                 while ($query = mysql_fetch_array($result)){?>
                 <div class="panel panel-default">
                     <div class="panel-body">
