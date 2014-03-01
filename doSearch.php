@@ -43,7 +43,9 @@
 		$result = mysql_query("SELECT * FROM News WHERE NewsTitle LIKE '%$searchQuery%' OR NewsContent LIKE '%$searchQuery%' AND NewsHidden = 0") or die(mysql_error());
 	}
 	?>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+	<? include ("displayNavbar.php"); ?>
+    <!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	        <div class="container">
 	            <ul class="nav navbar-nav">
 	                <li>
@@ -72,7 +74,7 @@
 		            </li>
 		    	</ul>
 	        </div>
-    </nav>
+    </nav> -->
 
 <div class="container">
 	<div class="row">

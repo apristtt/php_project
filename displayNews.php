@@ -28,6 +28,7 @@
                         <div class="panel-body">
                             <? echo $query['NewsContentSubString'] ?>
                         </div>
+                        <? $result = mysql_query("SELECT Count(NewsID) FROM Comments WHERE NewsID = '<? echo $query[NewsID] ?>'")?>
                         <div class="panel-footer">
                         <span class="label label-primary"><span class="glyphicon glyphicon-comment"></span> 0</span>
                             <a href="readNews.php?NewsID=<? echo $query['NewsID'] ?>">

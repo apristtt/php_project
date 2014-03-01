@@ -104,7 +104,9 @@
                         <button type="button" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px;">Submit</button>
                     </div>
                 </div>
-                <div class="panel panel-default">
+                <!-- Comment the mockup -->
+
+               <!--  <div class="panel panel-default">
                     <div class="panel-body">
                         <p class="lead">
                             Great!
@@ -119,105 +121,35 @@
                         </ul>
 
                     </div>
+                </div> -->
+                
+                <? //$result = mysql_query("SELECT * FROM Comments WHERE NewsID = '$NewsID'");
+                $result = mysql_query("SELECT Member.MemberID, Member.MemberName, Comments.CommentID, Comments.CommentContent, Comments.CommentDate FROM Member INNER JOIN Comments ON Member.MemberID = Comments.MemberID WHERE Comments.NewsID = '$NewsID'");
+                while ($query = mysql_fetch_array($result)){?>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p class="lead">
+                            <? echo $query['CommentContent'] ?>
+                        </p>
+                    </div>
+                    <div class="panel-footer panel-success">
+                        <ul class="list-inline">
+                           <!--  <li class="pull-left"><img src="http://graph.facebook.com/chutchartpower/picture?width=25&height=25" class="media-object"> 
+                        </li> -->
+                            <li>By <b><? echo $query['MemberName'] ?></b></li>
+                            <li class="pull-right"><small>Posted on <? echo $query['CommentDate'] ?></small></li>
+                        </ul>
+
+                    </div>
                 </div>
+                <? } ?>
             </div>
            
               <? include("displaySidebar.php") ?>
             
         </div>
         
-       
-        
     </div>
-    
-    
-    
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="email" class="col-md-8 control-label">Email Address</label>
-                                <div class="col-md-15">
-                                    <input type="email" class="form-control" placeholder="Email Address">
-                                </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-md-8 control-label">Password</label>
-                                <div class="col-md-15">
-                                    <input type="password" class="form-control" placeholder="Password">
-                                </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-8 col-md-12">
-                                <div class="checkbox">
-                                    <label>
-                                        <ul class="list-inline">
-                                            <li><input type="checkbox" style="width:0px;"></li>
-                                            <li>Remember me?</li>
-                                        </ul>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                      
-                    </form>
-                                       
-                </div>
-                <div class="modal-footer">
-                    <ul class="list-inline">
-                        <li class="pull-left"><h6>Don't have an account? <a href="signup.php"><b>Sign Up!</b></a></h6></li>
-                        <li class="pull-right"><button type="button" class="btn btn-primary">Sign In</button></li>
-                        <li class="pull-right"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="signupModalLabel">Sign Up</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="email" class="col-md-8 control-label">Email Address</label>
-                            <div class="col-md-15">
-                                <input type="email" class="form-control" placeholder="Email Address">
-                            </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-md-8 control-label">Password</label>
-                            <div class="col-md-15">
-                                <input type="password" class="form-control" placeholder="Password">
-                            </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmpassword" class="col-md-8 control-label">Confirm password</label>
-                            <div class="col-md-15">
-                                <input type="password" class="form-control" placeholder="Confirm password">
-                            </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Sign Up</button>
-            </div>
-        </div>
-    </div>
-</div>
-         <?   }
-        ?>
+         <?   }        ?>
     </body>
     </html>

@@ -95,8 +95,8 @@
    
             $MemberName = isset($_SESSION['MemberName']);
 
-            echo 
-                "<kbd>Session ID : $_SESSION[MemberSessionID]</kbd><br>  <kbd>Session MemberName : $_SESSION[MemberName]</kbd> <br> <kbd>Session IsAdmin : $_SESSION[MemberIsAdmin]</kbd>";
+            // echo 
+            //     "<kbd>Session ID : $_SESSION[MemberSessionID]</kbd><br>  <kbd>Session MemberName : $_SESSION[MemberName]</kbd> <br> <kbd>Session IsAdmin : $_SESSION[MemberIsAdmin]</kbd>";
 
         if(isset($MemberSessionID)<>session_id() or empty($MemberName)){
             echo '<p class="alert alert-warning">You are not logged in!</p>';
