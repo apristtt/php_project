@@ -100,9 +100,11 @@
                         <img src="http://graph.facebook.com/zuck/picture?type=normal" class="media-object img-circle">
                     </a>
                     <div class="media-body">
-                        <textarea class="form-control" rows="5" width="100%" name="CommentContent"></textarea>
-                        <input type="submit" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px; width: 80px;   " value="Submit">
+                        <form action="doAddComments.php?NewsID=<? echo $query['NewsID'] ?>" method="POST">
+                            <textarea class="form-control" rows="5" width="100%" name="CommentContent"></textarea>
+                            <input type="submit" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px; width: 80px;   " value="Submit">
                         <!-- <button type="button" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px;">Submit</button> -->
+                        </form>
                     </div>
                 </div>
                 <!-- Comment the mockup -->

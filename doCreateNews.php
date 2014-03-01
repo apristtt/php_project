@@ -1,8 +1,10 @@
 <?php 
+	session_start();
 	require("conf.php");
 
 	$NewsTitle = $_POST['NewsTitle'];
 	$NewsContent = $_POST['NewsContent'];
+	
 	// $NewsPinned = $_POST['NewsPinned'];
 
 	if(isset($_POST['NewsPinned']))

@@ -37,11 +37,12 @@
         require("conf.php"); 
         require("init.php");
         require("class/member.class.php");
-        session_start(); 
+        require("session.php");
+        // session_start(); 
       
-            $MemberSessionID = isset($_SESSION['MemberSessionID']);
+        //     $MemberSessionID = isset($_SESSION['MemberSessionID']);
 
-            $MemberName = isset($_SESSION['MemberName']);
+        //     $MemberName = isset($_SESSION['MemberName']);
 
 
     ?>
@@ -91,9 +92,9 @@
     <div class="container">
 
 <?
-            $MemberSessionID = isset($_SESSION['MemberSessionID']);
+            // $MemberSessionID = isset($_SESSION['MemberSessionID']);
    
-            $MemberName = isset($_SESSION['MemberName']);
+            // $MemberName = isset($_SESSION['MemberName']);
 
             // echo 
             //     "<kbd>Session ID : $_SESSION[MemberSessionID]</kbd><br>  <kbd>Session MemberName : $_SESSION[MemberName]</kbd> <br> <kbd>Session IsAdmin : $_SESSION[MemberIsAdmin]</kbd>";

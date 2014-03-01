@@ -5,6 +5,7 @@
 	session_start();
 	$MemberName = $_POST['MemberName'];
 	$MemberPassword = $_POST['MemberPassword'];
+	$MemberID = null;
 
 	if ($MemberName == "" && $MemberPassword == "") {
 		echo "<div class='container alert alert-danger'>Please type your username and password</div>";
@@ -27,6 +28,8 @@
 					} elseif ($query['MemberIsAdmin']=='0'){
 						$_SESSION['MemberIsAdmin'] = '0';
 					}
+					$_SESSION['MemberID'] = mysql_query("SELECT MemberID FROM Member WHERE MemberName = '$MemberName'");
+					//$_SESSION['MemberID'] = $MemberID;
 			}
 			header("Location:home.php");
 
