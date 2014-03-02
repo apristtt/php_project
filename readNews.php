@@ -45,7 +45,12 @@
             if(!isset($_SESSION)){
                 session_start();
             }
-            //echo $NewsID;
+            
+            $resultMemberSession = mysql_query("SELECT * FROM Member WHERE MemberID = '$_SESSION[MemberID]'") or die(mysql_error());
+            $queryMemberSession = mysql_fetch_array($resultMemberSession);
+
+            $resultMemberSQL = mysql_query("SELECT * FROM Member");
+            $queryMemberSQL = mysql_fetch_array($resultMemberSQL);
             ?>
     
     
@@ -92,17 +97,25 @@
                     </div>
                     <? } ?>
                 </div>
+
+                <!-- 
+                        START Comments Area
+                 -->                
                 <div class="page-header">
                     <h3>Comments</h3>
                 </div>
                 <div class="media">
+                <?
+                    if (!empty($queryMemberSession['MemberFbPhoto'])){
+                ?>
                     <a class="pull-left">
-                        <img src="http://graph.facebook.com/zuck/picture?type=normal" class="media-object img-circle">
+                        <img src="http://graph.facebook.com/<? echo $queryMemberSession['MemberFbPhoto'] ?>/picture?type=normal" class="media-object img-circle">
                     </a>
+                <? } ?>
                     <div class="media-body">
                         <form action="doAddComments.php?NewsID=<? echo $query['NewsID'] ?>" method="POST">
                             <textarea class="form-control" rows="5" width="100%" name="CommentContent"></textarea>
-                            <input type="submit" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px; width: 80px;   " value="Submit">
+                            <input type="submit" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px; width: 80px;" value="Submit">
                         <!-- <button type="button" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px;">Submit</button> -->
                         </form>
                     </div>
@@ -127,7 +140,7 @@
                 </div> -->
                 
                 <? //$result = mysql_query("SELECT * FROM Comments WHERE NewsID = '$NewsID'");
-                $result = mysql_query("SELECT Member.MemberID, Member.MemberName, Comments.CommentID, Comments.CommentContent, Comments.CommentDate FROM Member INNER JOIN Comments ON Member.MemberID = Comments.MemberID WHERE Comments.NewsID = '$NewsID'");
+                $result = mysql_query("SELECT Member.MemberID, Member.MemberName, Member.MemberFbPhoto, Comments.CommentID, Comments.CommentContent, Comments.CommentDate FROM Member INNER JOIN Comments ON Member.MemberID = Comments.MemberID WHERE Comments.NewsID = '$NewsID'");
                 $num = mysql_num_rows($result);
                 if($num <= 0){
                     echo '<div class="panel panel-default panel-body"><i align="center">No comments</i></div>';
@@ -141,8 +154,11 @@
                     </div>
                     <div class="panel-footer panel-success">
                         <ul class="list-inline">
-                           <!--  <li class="pull-left"><img src="http://graph.facebook.com/chutchartpower/picture?width=25&height=25" class="media-object"> 
-                        </li> -->
+                            <? if (!empty($query['MemberFbPhoto'])){ ?>
+                            <li class="pull-left">
+                                <img src="http://graph.facebook.com/<? echo $query['MemberFbPhoto']?>/picture?width=25&height=25" class="media-object"> 
+                            </li>
+                            <? } ?>
                             <li>By <b><? echo $query['MemberName'] ?></b></li>
                             <li class="pull-right"><small>Posted on <? echo $query['CommentDate'] ?></small></li>
                         </ul>

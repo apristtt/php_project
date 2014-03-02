@@ -81,3 +81,42 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="updateProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="updateProfileModalLabel">Update Profile Picture</h4>
+            </div>
+            <div class="modal-body">
+            <?  $result = mysql_query("SELECT MemberID, MemberFbPhoto FROM Member WHERE MemberID = '$_SESSION[MemberID]'");
+                $query = mysql_fetch_array($result); ?>
+
+                    <form action="editProfilePicture.php?memberID=<? echo $_SESSION['MemberID'] ?>" method="POST" class="form-inline">
+                        
+                        <?  if(!empty($query['MemberFbPhoto'])){
+                                echo "<div align='center'><a href='deleteProfilePicture.php?memberID=$_SESSION[MemberID]'><img src='http://graph.facebook.com/$query[MemberFbPhoto]/picture?width=100&height=100' class='img-thumbnail'></a>
+                                <span class='help-block'><i>Current Profile Picture or click on photo to remove current.</i></span></div>";
+                                echo '<hr>';
+                            }
+                        ?>
+                       <div class="row">
+                            <div class="col-lg-9">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" style="width:400px;" placeholder="Type your facebook username here" name="MemberFbPhoto">
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+                                    </span>
+                                  <!-- <input type="text" class="form-control" placeholder="Type your facebook username here" name="MemberFbPhoto"> -->
+                                </div>
+                    </form>
+                            </div>
+                                  </div>
+            </div>
+           <!--  <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>

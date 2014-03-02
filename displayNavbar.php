@@ -39,6 +39,21 @@
             $query = mysql_fetch_array($result);
             echo "<li class='dropdown'><a href='#' data-toggle='dropdown' data-target='#' class='dropdown-toggle'>Signed in as $query[MemberName] <b class='caret'></b></a>";
             echo '<ul class="dropdown-menu">';
+            echo '<li class="dropdown-header">Member Info</li>';
+            echo "<li><a>";
+                if(!empty($query['MemberFbPhoto'])) {
+                    echo "<img src='http://graph.facebook.com/$query[MemberFbPhoto]/picture?width=20&height=20'>&nbsp;";
+                }
+            echo "$query[MemberName]";
+                if ($query['MemberIsAdmin']=="1"){
+                    echo "&emsp;<span class='label label-danger'>Admin</span>";
+                } elseif ($query['MemberIsAdmin']=="0") {
+                    echo "&emsp;<span class='label label-default'>Member</span>";
+                }
+            echo "</a></li>";
+            echo '<div class="divider"></div>';
+            echo '<li><a href="#" data-toggle="modal" data-target="#updateProfileModal">Update Profile Picture</a></li>';
+            echo '<div class="divider"></div>';
             echo "<li><a href='doLogout.php'>Logout</a></li>";
             echo "</ul></li>"
             ?>

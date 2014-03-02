@@ -28,7 +28,7 @@
 					} elseif ($query['MemberIsAdmin']=='0'){
 						$_SESSION['MemberIsAdmin'] = '0';
 					}
-					$_SESSION['MemberID'] = mysql_query("SELECT MemberID FROM Member WHERE MemberName = '$MemberName'");
+					$_SESSION['MemberID'] = $query['MemberID'];
 					//$_SESSION['MemberID'] = $MemberID;
 			}
 			header("Location:home.php");
