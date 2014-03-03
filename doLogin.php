@@ -22,13 +22,13 @@
 		} else {			
 			$_SESSION['MemberSessionID'] = session_id();
 			$_SESSION['MemberName'] = $MemberName;
-			while ($query = mysql_fetch_array($result)) {
-					if($query['MemberIsAdmin']=='1'){
+			while ($queryLogin = mysql_fetch_array($result)) {
+					if($queryLogin['MemberIsAdmin']=='1'){
 						$_SESSION['MemberIsAdmin'] = '1';
-					} elseif ($query['MemberIsAdmin']=='0'){
+					} elseif ($queryLogin['MemberIsAdmin']=='0'){
 						$_SESSION['MemberIsAdmin'] = '0';
 					}
-					$_SESSION['MemberID'] = $query['MemberID'];
+					$_SESSION['MemberID'] = $queryLogin['MemberID'];
 					//$_SESSION['MemberID'] = $MemberID;
 			}
 			header("Location:home.php");

@@ -90,13 +90,13 @@
                 <h4 class="modal-title" id="updateProfileModalLabel">Update Profile Picture</h4>
             </div>
             <div class="modal-body">
-            <?  $result = mysql_query("SELECT MemberID, MemberFbPhoto FROM Member WHERE MemberID = '$_SESSION[MemberID]'");
-                $query = mysql_fetch_array($result); ?>
+            <?  $resultMemberPicture = mysql_query("SELECT MemberID, MemberFbPhoto FROM Member WHERE MemberID = '$_SESSION[MemberID]'");
+                $queryMemberPicture = mysql_fetch_array($resultMemberPicture); ?>
 
                     <form action="editProfilePicture.php?memberID=<? echo $_SESSION['MemberID'] ?>" method="POST" class="form-inline">
                         
-                        <?  if(!empty($query['MemberFbPhoto'])){
-                                echo "<div align='center'><a href='deleteProfilePicture.php?memberID=$_SESSION[MemberID]'><img src='http://graph.facebook.com/$query[MemberFbPhoto]/picture?width=100&height=100' class='img-thumbnail'></a>
+                        <?  if(!empty($queryMemberPicture['MemberFbPhoto'])){
+                                echo "<div align='center'><a href='deleteProfilePicture.php?memberID=$_SESSION[MemberID]'><img src='http://graph.facebook.com/$queryMemberPicture[MemberFbPhoto]/picture?width=100&height=100' class='img-thumbnail'></a>
                                 <span class='help-block'><i>Current Profile Picture or click on photo to remove current.</i></span></div>";
                                 echo '<hr>';
                             }

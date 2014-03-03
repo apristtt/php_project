@@ -29,12 +29,12 @@
                 </div>
             <!-- <? // } else {  } ?> -->
             <? } ?>
-                <h4>Pinned News</h4>
+                <h4>Pinned News <a href="viewAllPinnedNews.php"><small>View all</small></a></h4>
                 <div class="list-group">
 
                     <?php
                         $resultPinnedNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT 5") or die(mysql_error());
-
+                        
                         while($queryPinnedNews = mysql_fetch_array($resultPinnedNews)) {
                             echo "<a href='readNews.php?NewsID=$queryPinnedNews[NewsID]' class='list-group-item'>".
                             "<p class='list-group-item-text'>$queryPinnedNews[NewsTitle]</p></a>";

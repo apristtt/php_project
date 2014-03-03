@@ -7,9 +7,9 @@
     $MemberSessionID = isset($_SESSION['MemberSessionID']);
     $MemberName = isset($_SESSION['MemberName']);
 
-    	$result = mysql_query("SELECT * FROM Member WHERE MemberName = '$MemberName'");
-    	$query = mysql_fetch_array($result);
-    	$_SESSION['MemberID'] = $query['MemberID'];
+    	$resultSession = mysql_query("SELECT * FROM Member WHERE MemberName = '$MemberName'");
+    	$querySession = mysql_fetch_array($resultSession);
+    	$_SESSION['MemberID'] = $querySession['MemberID'];
 
     	echo $_SESSION['MemberID'];
     ?>

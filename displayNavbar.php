@@ -12,13 +12,14 @@
                 </li>
                 <li><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 <li><a href="member.php">Member</a></li>
-                <li><a href="#">Another test</a></li>
-                    <li class="dropdown">
+                <li><a href="viewAllPinnedNews.php">View all pinned</a></li>
+                <li><a href="trackAllNews.php">All News</a></li>
+                    <!-- <li class="dropdown">
                         <a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Drop me!<b class="caret"></b></b></a>
                     <ul class="dropdown-menu">
                         <li><a>Menu</a></li>
                     </ul>
-                    </li>
+                    </li> -->
             </ul>
     <ul class="nav navbar-nav navbar-right">
             <li>
@@ -35,19 +36,19 @@
             </li>'?>
 
        <? } else { ?>
-            <?  $result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'");
-            $query = mysql_fetch_array($result);
-            echo "<li class='dropdown'><a href='#' data-toggle='dropdown' data-target='#' class='dropdown-toggle'>Signed in as $query[MemberName] <b class='caret'></b></a>";
+            <?  $resultMemberNavbar = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'");
+            $queryMemberNavbar = mysql_fetch_array($resultMemberNavbar);
+            echo "<li class='dropdown'><a href='#' data-toggle='dropdown' data-target='#' class='dropdown-toggle'>Signed in as $queryMemberNavbar[MemberName] <b class='caret'></b></a>";
             echo '<ul class="dropdown-menu">';
             echo '<li class="dropdown-header">Member Info</li>';
             echo "<li><a>";
-                if(!empty($query['MemberFbPhoto'])) {
-                    echo "<img src='http://graph.facebook.com/$query[MemberFbPhoto]/picture?width=20&height=20'>&nbsp;";
+                if(!empty($queryMemberNavbar['MemberFbPhoto'])) {
+                    echo "<img src='http://graph.facebook.com/$queryMemberNavbar[MemberFbPhoto]/picture?width=20&height=20'>&nbsp;";
                 }
-            echo "$query[MemberName]";
-                if ($query['MemberIsAdmin']=="1"){
+            echo "$queryMemberNavbar[MemberName]";
+                if ($queryMemberNavbar['MemberIsAdmin']=="1"){
                     echo "&emsp;<span class='label label-danger'>Admin</span>";
-                } elseif ($query['MemberIsAdmin']=="0") {
+                } elseif ($queryMemberNavbar['MemberIsAdmin']=="0") {
                     echo "&emsp;<span class='label label-default'>Member</span>";
                 }
             echo "</a></li>";
