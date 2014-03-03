@@ -34,59 +34,29 @@
 <body>
 	<?php 
 		require("conf.php");
-		if(empty($_REQUEST['searchQuery'])) {
-            echo '<div class="container alert alert-danger">Incorrect access</div>';
-		} else {
+		// if(empty($_REQUEST['searchQuery'])) {
+  //           echo '<div class="container alert alert-danger">Incorrect access</div>';
+		// } else {
 
-		if($_REQUEST['searchQuery'] != "") {
-		$searchQuery = $_REQUEST['searchQuery'];
-		$result = mysql_query("SELECT * FROM News WHERE NewsTitle LIKE '%$searchQuery%' OR NewsContent LIKE '%$searchQuery%' AND NewsHidden = 0") or die(mysql_error());
-	}
+		// if($_REQUEST['searchQuery'] != "") {
+		$searchQuery = $_POST['searchQuery'];
+		$searchResult = mysql_query("SELECT * FROM News WHERE NewsTitle LIKE '%$searchQuery%' OR NewsContent LIKE '%$searchQuery%' AND NewsHidden = '0'") or die(mysql_error());
+	// }
 	?>
 
 	<? include ("displayNavbar.php"); ?>
-    <!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	        <div class="container">
-	            <ul class="nav navbar-nav">
-	                <li>
-	                    <a><span class="label label-success">Logo</span></a>
-	                </li>
-	                <li><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-	                <li><a href="member.php">Member</a></li>
-	                <li><a href="#">Another test</a></li>
-	                    <li class="dropdown">
-	                        <a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Drop me!<b class="caret"></b></a>
-	                    <ul class="dropdown-menu">
-	                        <li><a>Menu</a></li>
-	                    </ul>
-	                    </li>
-	            </ul>
-		    	<ul class="nav navbar-nav navbar-right">
-		            <li class="active">
-		                <a href="#" role="button" class="btn" data-toggle="modal" data-target="#searchModal">
-		                    <span class="glyphicon glyphicon-search"></span>
-		                </a>
-		            </li>
-		            <li>
-		                <a href="#" role="button" class="dropdown-toggle" data-toggle="modal" data-target="#loginModal">
-		                    <span class="glyphicon glyphicon-user"></span>
-		                </a>
-		            </li>
-		    	</ul>
-	        </div>
-    </nav> -->
 
 <div class="container">
 	<div class="row">
 		<div class="page-header">
-			<h3>Result of : <? echo $_REQUEST['searchQuery'] ?></h3>
+			<h3>Result of : <? echo $_POST['searchQuery'] ?></h3>
 		</div>
 		<? 
-			$num = mysql_num_rows($result);
+			$num = mysql_num_rows($searchResult);
 			if ($num <= 0){
 				echo '<div class="panel panel-default panel-body"><h4 align="center">Sorry, No result :(</h4></div>';
 			} else {
-				while($query = mysql_fetch_array($result)){ ?>
+				while($query = mysql_fetch_array($searchResult)){ ?>
 		<div class="panel panel-info" style="box-shadow: 2px 2px 4px #888888;">
 			<div class="panel-body">
 					<div class="media">
@@ -99,7 +69,7 @@
 					</div>
 			</div>
 		</div>
-		<? } } ?>
+		<? } //} ?>
 	</div>
 </div>
 </body>

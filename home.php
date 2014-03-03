@@ -93,9 +93,7 @@
 
 <?
             // $MemberSessionID = isset($_SESSION['MemberSessionID']);
-   
             // $MemberName = isset($_SESSION['MemberName']);
-
             // echo 
             //     "<kbd>Session ID : $_SESSION[MemberSessionID]</kbd><br>  <kbd>Session MemberName : $_SESSION[MemberName]</kbd> <br> <kbd>Session IsAdmin : $_SESSION[MemberIsAdmin]</kbd>";
 

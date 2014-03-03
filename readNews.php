@@ -103,6 +103,7 @@
                  -->                
                 <div class="page-header">
                     <h3>Comments</h3>
+                    <h4><? echo $_SESSION['MemberID']?></h4>
                 </div>
                 <div class="media">
                 <?
@@ -140,7 +141,7 @@
                 </div> -->
                 
                 <? //$result = mysql_query("SELECT * FROM Comments WHERE NewsID = '$NewsID'");
-                $result = mysql_query("SELECT Member.MemberID, Member.MemberName, Member.MemberFbPhoto, Comments.CommentID, Comments.CommentContent, Comments.CommentDate FROM Member INNER JOIN Comments ON Member.MemberID = Comments.MemberID WHERE Comments.NewsID = '$NewsID'");
+                $result = mysql_query("SELECT Member.MemberID, Member.MemberName, Member.MemberFbPhoto, Comments.CommentID, Comments.CommentContent, Comments.CommentDate FROM Member INNER JOIN Comments ON Member.MemberID = Comments.MemberID WHERE Comments.NewsID = '$NewsID' ORDER by Comments.CommentDate DESC");
                 $num = mysql_num_rows($result);
                 if($num <= 0){
                     echo '<div class="panel panel-default panel-body"><i align="center">No comments</i></div>';

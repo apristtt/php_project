@@ -45,7 +45,7 @@
 	 					$_SESSION['MemberIsAdmin'] = '1';
 	 					// $displayInfo->displayMemberInfo();
 	 					echo "Member ID (SQL) : $query[MemberID] <br>".
-	 			//"Member ID (SESSION) : $_SESSION[MemberID] <br>".
+	 			"Member ID (SESSION) : $_SESSION[MemberID] <br>".
 	 			"Member Name (SQL): $query[MemberName] <br>".
 	 			"Member Email : $query[MemberEmail] <br>".
 	 			"Member Joined on : $query[MemberJoinDate] <br>";
@@ -55,7 +55,7 @@
 	 					$_SESSION['MemberIsAdmin'] = '0';
 	 					// $this->displayMemberInfo();
 	 					echo "Member ID (SQL) : $query[MemberID] <br>".
-	 			//"Member ID (SESSION) : $_SESSION[MemberID] <br>".
+	 			"Member ID (SESSION) : $_SESSION[MemberID] <br>".
 	 			"Member Name : $query[MemberName] <br>".
 	 			"Member Email : $query[MemberEmail] <br>".
 	 			"Member Joined on : $query[MemberJoinDate] <br>";

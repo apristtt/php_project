@@ -5,7 +5,7 @@
 	session_start();
 	$MemberName = $_POST['MemberName'];
 	$MemberPassword = $_POST['MemberPassword'];
-	$MemberID = null;
+	// $MemberID = null;
 
 	if ($MemberName == "" && $MemberPassword == "") {
 		echo "<div class='container alert alert-danger'>Please type your username and password</div>";
