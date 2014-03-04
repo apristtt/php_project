@@ -9,7 +9,12 @@
 
     	$resultSession = mysql_query("SELECT * FROM Member WHERE MemberName = '$MemberName'");
     	$querySession = mysql_fetch_array($resultSession);
-    	$_SESSION['MemberID'] = $querySession['MemberID'];
 
-    	echo $_SESSION['MemberID'];
+        // push member id from sql to session
+    	$querySession['MemberID'] = $_SESSION['MemberID'];
+
+     //    echo "$_SESSION[MemberID]<br>";
+    	// echo "$_SESSION[MemberName]<br>";
+     //    echo $_SESSION['MemberIsAdmin'];
+        
     ?>

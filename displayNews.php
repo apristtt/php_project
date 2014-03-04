@@ -14,15 +14,16 @@
                     $page = $_GET['page'];
                     $start = $p_size*($page-1);
                 }
-                    $result = mysql_query("SELECT NewsID, NewsPinned, NewsHidden, NewsTitle, SUBSTRING(NewsContent, 1, 250) AS NewsContentSubString, NewsDate FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT $start, $p_size") or die(mysql_error());
+                    $result = mysql_query("SELECT News.NewsID, News.NewsPinned, News.NewsHidden, News.NewsTitle, News.MemberID, Member.MemberID, Member.MemberName, SUBSTRING(News.NewsContent, 1, 250) AS NewsContentSubString, News.NewsDate FROM News INNER JOIN Member ON News.MemberID = Member.MemberID WHERE News.NewsPinned = 0 AND News.NewsHidden = 0 ORDER by News.NewsID DESC LIMIT $start, $p_size") or die(mysql_error());
                     while ($query = mysql_fetch_array($result)){                    
                 ?>
+
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <? echo $query['NewsTitle'] ?> &ensp;
                                 <? include ("displayNewsTools.php") ?>
                             <small class="pull-right">
-                                Posted on <? echo $query['NewsDate'] ?>
+                                Posted on <? echo $query['NewsDate'] ?> by <? echo $query['MemberName'] ?>
                             </small>
                         </div>
                         <div class="panel-body">

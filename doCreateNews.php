@@ -1,6 +1,7 @@
 <?php 
 	session_start();
 	require("conf.php");
+	require("session.php");
 
 	$NewsTitle = $_POST['NewsTitle'];
 	$NewsContent = $_POST['NewsContent'];
@@ -23,7 +24,7 @@
 		// echo $_POST['NewsPinned'];
 	} else {
 		// $sql = ;
-		$query = mysql_query("INSERT INTO News (NewsTitle, NewsContent, NewsPinned) VALUES ('$NewsTitle', '$NewsContent', '$NewsPinned')") or die(mysql_error());
+		$query = mysql_query("INSERT INTO News (NewsTitle, NewsContent, NewsPinned, MemberID) VALUES ('$NewsTitle', '$NewsContent', '$NewsPinned', '$_SESSION[MemberID]')") or die(mysql_error());
 		echo '<script type="text/javascript">'.
 		"alert('Content Created!'); document.location = 'home.php'</script>";
 	}

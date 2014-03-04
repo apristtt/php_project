@@ -41,7 +41,7 @@
                     <h3>Hidden News</h3>
             </div>
                 <?
-                    $result = mysql_query("SELECT * FROM News WHERE NewsHidden = 1 ORDER by NewsID DESC") or die(mysql_error());
+                    $result = mysql_query("SELECT News.NewsID, News.NewsTitle, News.NewsDate, News.MemberID, News.NewsContent, News.NewsPinned, News.NewsHidden, Member.MemberID, Member.MemberName FROM News INNER JOIN Member ON News.MemberID = Member.MemberID WHERE News.NewsHidden = 1 ORDER by News.NewsID DESC") or die(mysql_error());
                     $num = mysql_num_rows($result);
                     if ($num <= 0){
                         echo '<div class="panel panel-default panel-body"><h4 align="center">Oops! No hidden news.</h4></div>';
@@ -53,7 +53,7 @@
                     <? echo $query['NewsTitle'] ?> &ensp;
                       <!-- <? //include("displayNewsTools.php") ?> -->
                   <small class="pull-right">
-                    <? echo $query['NewsDate'] ?>
+                    <? echo $query['NewsDate'] ?> by <? echo $query['MemberName'] ?>
                   </small>
               </div>
               <div class="panel-body">

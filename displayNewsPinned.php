@@ -1,5 +1,5 @@
                 <?
-                    $result = mysql_query("SELECT NewsID, NewsPinned, NewsHidden, NewsTitle, SUBSTRING(NewsContent, 1, 250) AS NewsContentSubString, NewsDate FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT 3") or die(mysql_error());
+                    $result = mysql_query("SELECT News.NewsID, News.NewsPinned, News.NewsHidden, News.NewsTitle, News.MemberID, SUBSTRING(News.NewsContent, 1, 250) AS NewsContentSubString, News.NewsDate, Member.MemberID, Member.MemberName FROM News INNER JOIN Member ON News.MemberID = Member.MemberID WHERE News.NewsPinned = 1 AND News.NewsHidden = 0 ORDER by News.NewsID DESC LIMIT 3") or die(mysql_error());
                     while ($query = mysql_fetch_array($result)){                    
                 ?>
                     <div class="panel panel-success">
@@ -7,7 +7,7 @@
                             <? echo $query['NewsTitle'] ?> &ensp;
                                 <? include ("displayNewsTools.php") ?>
                             <small class="pull-right">
-                                Posted on <? echo $query['NewsDate'] ?>
+                                Posted on <? echo $query['NewsDate'] ?> by <? echo $query['MemberName'] ?>
                             </small>
                         </div>
                         <div class="panel-body">

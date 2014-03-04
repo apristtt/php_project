@@ -31,6 +31,7 @@
 					$_SESSION['MemberID'] = $queryLogin['MemberID'];
 					//$_SESSION['MemberID'] = $MemberID;
 			}
+			// $_SESSION['MemberID'] = $queryLogin['MemberID'];
 			header("Location:home.php");
 
 		}

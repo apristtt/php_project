@@ -36,9 +36,10 @@
  			$result = mysql_query("SELECT * FROM Member WHERE MemberName = '$_SESSION[MemberName]'");
  			while ($query = mysql_fetch_array($result)) {
  				//echo "$_SESSION[MemberID]<br>";
- 				//$query['MemberID'] = $_SESSION['MemberID'];
+ 				// $query['MemberID'] = $_SESSION['MemberID'];
+ 				$_SESSION['MemberID'] = $query['MemberID'];
  				// echo "$query[MemberID] <br>";
- 				echo $_SESSION['MemberID'];
+ 				//echo $_SESSION['MemberID'];
  				//$query['MemberID'] = $MemberID;
 	 			if($query['MemberIsAdmin']==1){
 	 					echo "You are admin<br>";

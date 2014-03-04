@@ -3,7 +3,8 @@
             <? //if(isset($MemberSessionID)<>session_id() or empty($MemberName)){ ?>
             <!-- <? //if($query['MemberIsAdmin']='1') { ?> -->
             <? //null!==MemberIsAdmin; ?>
-            <? if(isset($_SESSION['MemberIsAdmin'])=='1') {?>
+            <? require ("session.php"); ?>
+            <? if(isset($_SESSION['MemberIsAdmin'])==1) {?>
                 <h4>Site Management</h4>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -34,10 +35,14 @@
 
                     <?php
                         $resultPinnedNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 1 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT 5") or die(mysql_error());
-                        
-                        while($queryPinnedNews = mysql_fetch_array($resultPinnedNews)) {
-                            echo "<a href='readNews.php?NewsID=$queryPinnedNews[NewsID]' class='list-group-item'>".
-                            "<p class='list-group-item-text'>$queryPinnedNews[NewsTitle]</p></a>";
+                        $num = mysql_num_rows($resultPinnedNews);
+                        if ($num <= 0){
+                            echo '<p class="list-group-item"><i>No pinned news</i></p>';
+                        } else {
+                            while($queryPinnedNews = mysql_fetch_array($resultPinnedNews)) {
+                                echo "<a href='readNews.php?NewsID=$queryPinnedNews[NewsID]' class='list-group-item'>".
+                                "<p class='list-group-item-text'>$queryPinnedNews[NewsTitle]</p></a>";
+                            }
                         }
 
                     ?>
@@ -49,12 +54,15 @@
 
                     <?php
                         $resultRecentNews = mysql_query("SELECT * FROM News WHERE NewsPinned = 0 AND NewsHidden = 0 ORDER by NewsID DESC LIMIT 5") or die(mysql_error());
-
-                        while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
-                            echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".
-                            "<p class='list-group-item-text'>$queryRecentNews[NewsTitle]</p></a>";
+                        $num = mysql_num_rows($resultRecentNews);
+                        if ($num <= 0){
+                            echo '<p class="list-group-item"><i>No recent news</i></p>';
+                        } else {
+                            while($queryRecentNews = mysql_fetch_array($resultRecentNews)) {
+                                echo "<a href='readNews.php?NewsID=$queryRecentNews[NewsID]' class='list-group-item'>".
+                                "<p class='list-group-item-text'>$queryRecentNews[NewsTitle]</p></a>";
+                            }
                         }
-
                     ?>
                     
                 </div>

@@ -53,13 +53,13 @@
                     <tbody>
                         <?php
                             require("conf.php");
-                            $result = mysql_query("SELECT NewsID, NewsTitle, NewsDate, MemberID FROM News WHERE NewsPinned = '1'") or die(mysql_error());
+                            $result = mysql_query("SELECT News.NewsID, News.NewsTitle, News.NewsDate, News.MemberID, Member.MemberID, Member.MemberName, Member.MemberIsAdmin FROM News INNER JOIN Member ON News.MemberID = Member.MemberID WHERE News.NewsPinned = '1'") or die(mysql_error());
 
                             while($query = mysql_fetch_array($result)){
 
                                 echo "<tr><td>$query[NewsID]</td>".
-                                "<td>$query[NewsTitle]</td>".
-                                "<td>$query[MemberID]</td>".
+                                "<td><a href='readNews.php?NewsID=$query[NewsID]'>$query[NewsTitle]</a></td>".
+                                "<td>$query[MemberName]</td>".
                                 "<td>$query[NewsDate]</td>".
                                 "<td><a href='editNews.php?NewsID=$query[NewsID]'>".
                                 "<button class='btn btn-success btn-xs'><span class='glyphicon glyphicon-pencil'>".

@@ -6,7 +6,6 @@
 	$CommentContent = $_POST['CommentContent'];
 	$_SESSION['MemberID'];
 
-
 	if (empty($CommentContent)) {
 		echo "Please type your comments <br>";
 		echo "<a href='javascript: history.go(-1)'>&larr; Back</a>";

@@ -35,6 +35,7 @@
 <? include("displayNavbar.php"); ?>
     <?php 
         require("conf.php");
+        require("session.php");
         //$memberID = "";
         if(empty($_REQUEST['NewsID'])) {
             echo '<div class="container alert alert-danger">Incorrect access</div>';
@@ -103,7 +104,6 @@
                  -->                
                 <div class="page-header">
                     <h3>Comments</h3>
-                    <h4><? echo $_SESSION['MemberID']?></h4>
                 </div>
                 <div class="media">
                 <?

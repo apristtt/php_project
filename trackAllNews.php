@@ -34,6 +34,7 @@
 <body>
     
 <? include("displayNavbar.php"); ?>
+<? require("session.php"); ?>
     <div class="container">
         <div class="row">
            
@@ -46,30 +47,35 @@
                             <th>News Title</th>
                             <th>News Author</th>
                             <th>News Date</th>
+                            <? if($_SESSION['MemberIsAdmin']=='1'){ ?>
                             <th><span class="glyphicon glyphicon-cog"></span></th>
+                            <? } ?>
                         </tr>
                     </thead>
 
                     <tbody>
                         <?php
                             require("conf.php");
-                            $result = mysql_query("SELECT NewsID, NewsTitle, NewsDate, MemberID, NewsPinned FROM News WHERE NewsHidden = '0'") or die(mysql_error());
+                            $result = mysql_query("SELECT News.NewsID, News.NewsTitle, News.NewsDate, News.MemberID, News.NewsPinned, Member.MemberID, Member.MemberName, Member.MemberIsAdmin FROM News INNER JOIN Member ON News.MemberID = Member.MemberID WHERE NewsHidden = '0'") or die(mysql_error());
 
                             while($query = mysql_fetch_array($result)){
 
                                 echo "<tr><td>$query[NewsID]</td>".
-                                "<td>$query[NewsTitle]";
+                                "<td><a href='readNews.php?NewsID=$query[NewsID]'>$query[NewsTitle]</a>";
                                 if($query['NewsPinned']=='1'){
                                     echo "<span class='label label-success pull-right'>Pinned</span></td>";
                                 }
-                                echo "<td>$query[MemberID]</td>".
-                                "<td>$query[NewsDate]</td>".
-                                "<td><a href='editNews.php?NewsID=$query[NewsID]'>".
+                                echo "<td>$query[MemberName]</td>".
+                                "<td>$query[NewsDate]</td>";
+                                if($_SESSION["MemberIsAdmin"]=='1'){ 
+                                echo "<td><a href='editNews.php?NewsID=$query[NewsID]'>".
                                 "<button class='btn btn-success btn-xs'><span class='glyphicon glyphicon-pencil'>".
                                 "</span></button></a> &nbsp;".
                                 "<a href='doDeleteNews.php?NewsID=$query[NewsID]'>".
-                                "<button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'>".
+                                "<button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'>";
+                                } else {
                                 "</span></button></a></td></tr>";
+                            }
                             }
                         ?>
                     </tbody>
