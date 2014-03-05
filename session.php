@@ -11,7 +11,7 @@
     	$querySession = mysql_fetch_array($resultSession);
 
         // push member id from sql to session
-    	$querySession['MemberID'] = $_SESSION['MemberID'];
+    	$querySession['MemberID'] = isset($_SESSION['MemberID']);
 
      //    echo "$_SESSION[MemberID]<br>";
     	// echo "$_SESSION[MemberName]<br>";

@@ -34,6 +34,7 @@
 <body>
     
 <? include("displayNavbar.php"); ?>
+<? require("session.php"); ?>
     
     <div class="container">
         <div class="row">
@@ -48,7 +49,9 @@
                             <th>Group</th>
                             <th>Email Address</th>
                             <th>Join Date</th>
+                            <? if(isset($_SESSION['MemberIsAdmin'])=='1') { ?>
                             <th><span class="glyphicon glyphicon-cog"></span></th>
+                            <? } ?>
                         </tr>
                     </thead>
 
@@ -67,16 +70,19 @@
                                     echo "<td><span class='label label-default'>Member</span></td>";
                                 }
                                 echo "<td>$query[MemberEmail]</td>".
-                                "<td>$query[MemberJoinDate]</td>".
-                                "<td><a href='editMember.php?memberID=$query[MemberID]'>".
+                                "<td>$query[MemberJoinDate]</td>";
+                                if(isset($_SESSION['MemberIsAdmin'])=='1'){
+                                echo "<td><a href='editMember.php?memberID=$query[MemberID]'>".
                                 "<button class='btn btn-success btn-xs'><span class='glyphicon glyphicon-pencil'>".
                                 "</span></button></a> &nbsp;".
                                 // "<a href='#' role='button' class='dropdown-toggle' data-toggle='modal' data-target='#editModal'>".
                                 // "<button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'>".
                                 // "</span></button></a> &nbsp;".
                                 "<a href='doDeleteMember.php?memberID=$query[MemberID]'>".
-                                "<button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'>".
-                                "</span></button></a></td></tr>";
+                                "<button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'>";
+                                } else {
+                                echo "</span></button></a></td></tr>";
+                                }
                             }
                         ?>
                     </tbody>

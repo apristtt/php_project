@@ -41,13 +41,14 @@
             echo '<div class="container alert alert-danger">Incorrect access</div>';
         } elseif($_REQUEST['NewsID'] != "") {
             $NewsID = $_REQUEST['NewsID'];
+            $SessionMemberID = isset($_SESSION['MemberID']);
             $result = mysql_query("SELECT * FROM News WHERE NewsID = $NewsID") or die(mysql_error());
             $query = mysql_fetch_array($result);
             if(!isset($_SESSION)){
                 session_start();
             }
             
-            $resultMemberSession = mysql_query("SELECT * FROM Member WHERE MemberID = '$_SESSION[MemberID]'") or die(mysql_error());
+            $resultMemberSession = mysql_query("SELECT * FROM Member WHERE MemberID = '$SessionMemberID'") or die(mysql_error());
             $queryMemberSession = mysql_fetch_array($resultMemberSession);
 
             $resultMemberSQL = mysql_query("SELECT * FROM Member");
@@ -115,8 +116,10 @@
                 <? } ?>
                     <div class="media-body">
                         <form action="doAddComments.php?NewsID=<? echo $query['NewsID'] ?>" method="POST">
+                        <? if(isset($MemberSessionID)==session_id() or !empty($MemberName)){ ?>
                             <textarea class="form-control" rows="5" width="100%" name="CommentContent"></textarea>
                             <input type="submit" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px; width: 80px;" value="Submit">
+                        <? } ?>
                         <!-- <button type="button" class="btn btn-primary pull-right" style="margin-top: 5px; margin-bottom: 5px;">Submit</button> -->
                         </form>
                     </div>

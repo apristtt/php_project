@@ -46,7 +46,9 @@
                             <th>News Title</th>
                             <th>News Author</th>
                             <th>News Date</th>
+                            <? if (isset($_SESSION["MemberIsAdmin"])=='1'){ ?>
                             <th><span class="glyphicon glyphicon-cog"></span></th>
+                            <? } ?>
                         </tr>
                     </thead>
 
@@ -60,13 +62,16 @@
                                 echo "<tr><td>$query[NewsID]</td>".
                                 "<td><a href='readNews.php?NewsID=$query[NewsID]'>$query[NewsTitle]</a></td>".
                                 "<td>$query[MemberName]</td>".
-                                "<td>$query[NewsDate]</td>".
-                                "<td><a href='editNews.php?NewsID=$query[NewsID]'>".
+                                "<td>$query[NewsDate]</td>";
+                                if (isset($_SESSION['MemberIsAdmin'])=='1') {
+                                echo "<td><a href='editNews.php?NewsID=$query[NewsID]'>".
                                 "<button class='btn btn-success btn-xs'><span class='glyphicon glyphicon-pencil'>".
                                 "</span></button></a> &nbsp;".
                                 "<a href='doDeleteNews.php?NewsID=$query[NewsID]'>".
-                                "<button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'>".
+                                "<button class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-trash'>";
+                                } else {
                                 "</span></button></a></td></tr>";
+                                }
                             }
                         ?>
                     </tbody>

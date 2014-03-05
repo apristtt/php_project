@@ -4,7 +4,7 @@
             <!-- <? //if($query['MemberIsAdmin']='1') { ?> -->
             <? //null!==MemberIsAdmin; ?>
             <? require ("session.php"); ?>
-            <? if(isset($_SESSION['MemberIsAdmin'])==1) {?>
+            <? if(isset($_SESSION['MemberIsAdmin'])=='1') {?>
                 <h4>Site Management</h4>
                 <div class="panel panel-default">
                     <div class="panel-body">

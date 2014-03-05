@@ -110,7 +110,7 @@
                 "Member Name : $query[MemberName] <br>".
                 "Member Email : $query[MemberEmail] <br>".
                 "Member Joined on : $query[MemberJoinDate] <br>".
-                "Is Admin (0 is no, 1 is yes) : $query[MemberIsAdmin]".
+                "Is Admin (0 is no, 1 is yes) : $_SESSION[MemberIsAdmin]".
                 "<a href='doLogout.php' class='pull-right'>Logout</a></p>";
                 // $checkRole = new member();
                 // $checkRole->memberIsAdmin(); ?>

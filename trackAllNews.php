@@ -47,7 +47,7 @@
                             <th>News Title</th>
                             <th>News Author</th>
                             <th>News Date</th>
-                            <? if($_SESSION['MemberIsAdmin']=='1'){ ?>
+                            <? if(isset($_SESSION['MemberIsAdmin'])=='1'){ ?>
                             <th><span class="glyphicon glyphicon-cog"></span></th>
                             <? } ?>
                         </tr>
@@ -67,7 +67,7 @@
                                 }
                                 echo "<td>$query[MemberName]</td>".
                                 "<td>$query[NewsDate]</td>";
-                                if($_SESSION["MemberIsAdmin"]=='1'){ 
+                                if(isset($_SESSION["MemberIsAdmin"])=='1'){ 
                                 echo "<td><a href='editNews.php?NewsID=$query[NewsID]'>".
                                 "<button class='btn btn-success btn-xs'><span class='glyphicon glyphicon-pencil'>".
                                 "</span></button></a> &nbsp;".
